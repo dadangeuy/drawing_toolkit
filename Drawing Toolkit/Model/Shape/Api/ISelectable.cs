@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Drawing_Toolkit.Model {
-    enum Tool {
-        SELECTOR, LINE, ELLIPSE
+namespace Drawing_Toolkit.Model.Shape.Api {
+    interface ISelectable {
+        void Select();
+        void Deselect();
     }
 }
