@@ -4,6 +4,6 @@ using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Tool.Api {
     interface IPointerTool {
-        void Drag(Point from, Point to, List<IShape> shape);
+        void Drag(Point from, Point to, LinkedList<IShape> shapes);
     }
 }

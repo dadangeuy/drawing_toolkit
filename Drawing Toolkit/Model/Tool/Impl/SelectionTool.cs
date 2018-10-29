@@ -5,9 +5,8 @@ using Drawing_Toolkit.Model.Tool.Api;
 
 namespace Drawing_Toolkit.Model.Tool.Impl {
     class SelectionTool : ITool, IPointerTool {
-        public void Drag(Point from, Point to, List<IShape> shapes) {
+        public void Drag(Point from, Point to, LinkedList<IShape> shapes) {
             foreach (IShape shape in shapes) shape.Deselect();
-            shapes.Reverse();
             foreach (IShape shape in shapes) {
                 if (shape.Intersect(from)) {
                     Point difference = new Point(to.X - from.X, to.Y - from.Y);
@@ -16,7 +15,6 @@ namespace Drawing_Toolkit.Model.Tool.Impl {
                     return;
                 }
             }
-            shapes.Reverse();
         }
     }
 }

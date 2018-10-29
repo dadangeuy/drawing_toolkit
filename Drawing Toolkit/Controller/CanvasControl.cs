@@ -1,7 +1,5 @@
 ﻿using Drawing_Toolkit.Model.Shape.Api;
 using Drawing_Toolkit.Model.Tool.Api;
-using Drawing_Toolkit.Util;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -11,7 +9,7 @@ namespace Drawing_Toolkit.Controller {
         public ITool Tool;
         private Point mDownPoint;
         private Point mUpPoint;
-        private List<IShape> shapes = new List<IShape>(100);
+        private LinkedList<IShape> shapes = new LinkedList<IShape>();
 
         public CanvasControl() {
             InitUI();
@@ -27,8 +25,8 @@ namespace Drawing_Toolkit.Controller {
             Paint += (s, e) => DrawShapes();
             MouseDown += (s, e) => mDownPoint = new Point(e.X, e.Y);
             MouseUp += (s, e) => mUpPoint = new Point(e.X, e.Y);
-            MouseUp += (s, e) => ExecuteTool();
-            MouseUp += (s, e) => Repaint();
+            MouseUp += (s, e) => ExecuteShapeTool();
+            MouseUp += (s, e) => ExecuteSelectionTool();
         }
 
         private void DrawShapes() {
@@ -37,20 +35,24 @@ namespace Drawing_Toolkit.Controller {
                 shape.Draw(g);
         }
 
+        private void ExecuteShapeTool() {
+            if (Tool is IShapeTool shapeTool) {
+                IShape shape = shapeTool.CreateShape(mDownPoint, mUpPoint);
+                shapes.AddFirst(shape);
+                Repaint();
+            }
+        }
+
+        private void ExecuteSelectionTool() {
+            if (Tool is IPointerTool pointerTool) {
+                pointerTool.Drag(mDownPoint, mUpPoint, shapes);
+                Repaint();
+            }
+        }
+
         private void Repaint() {
             Invalidate();
             Update();
-        }
-
-        private void ExecuteTool() {
-            if (Tool is IShapeTool) {
-                IShapeTool shapeTool = (IShapeTool)Tool;
-                IShape shape = shapeTool.CreateShape(mDownPoint, mUpPoint);
-                shapes.Add(shape);
-            } else if (Tool is IPointerTool) {
-                IPointerTool pointerTool = (IPointerTool)Tool;
-                pointerTool.Drag(mDownPoint, mUpPoint, shapes);
-            }
         }
     }
 }
