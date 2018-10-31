@@ -72,6 +72,7 @@
     <Compile Include="Model\Drawing\State\DrawingState.cs" />
     <Compile Include="Model\Drawing\State\LockState.cs" />
     <Compile Include="Model\Event\MouseDragEventHandler.cs" />
+    <Compile Include="Model\Event\SetCanvasStateEventHandler.cs" />
     <Compile Include="Model\Event\ToolSelectedEventHandler.cs" />
     <Compile Include="Model\Tool\Api\IShapeTool.cs" />
     <Compile Include="Model\Tool\Api\ITool.cs" />

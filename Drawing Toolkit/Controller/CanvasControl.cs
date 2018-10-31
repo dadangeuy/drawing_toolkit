@@ -46,7 +46,7 @@ namespace Drawing_Toolkit.Controller {
 
         private void InitUpdateContextEvent() {
             MouseDrag += (e, e2) => canvas.Drag(new Point(e.X, e.Y), new Point(e2.X, e2.Y));
-            MouseUp += (s, e) => canvas.Click(new Point(e.X, e.Y));
+            MouseDown += (s, e) => canvas.Click(new Point(e.X, e.Y));
         }
 
         private void InitRenderingEvent() {

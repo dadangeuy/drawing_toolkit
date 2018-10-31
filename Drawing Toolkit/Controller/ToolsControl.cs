@@ -1,11 +1,11 @@
-﻿using Drawing_Toolkit.Model.Event;
+﻿using Drawing_Toolkit.Model.Canvas.State;
+using Drawing_Toolkit.Model.Event;
 using Drawing_Toolkit.Model.Tool.Impl;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Controller {
     class ToolsControl : ToolStrip {
-        public event ToolSelectedEventHandler ToolSelectedEventHandler;
-
+        public event SetCanvasStateEventHandler SetCanvasStateEvent;
         private readonly ToolStripItem selectionTool = new ToolStripButton("Selection");
         private readonly ToolStripItem rectangleTool = new ToolStripButton("Rectangle");
         private readonly ToolStripItem ellipseTool = new ToolStripButton("Ellipse");
@@ -24,9 +24,9 @@ namespace Drawing_Toolkit.Controller {
         }
 
         private void InitCallback() {
-            selectionTool.Click += (s, e) => ToolSelectedEventHandler.Invoke(new SelectionTool());
-            rectangleTool.Click += (s, e) => ToolSelectedEventHandler.Invoke(new RectangleTool());
-            ellipseTool.Click += (s, e) => ToolSelectedEventHandler.Invoke(new EllipseTool());
+            selectionTool.Click += (s, e) => SetCanvasStateEvent.Invoke(SelectionState.INSTANCE);
+            rectangleTool.Click += (s, e) => SetCanvasStateEvent.Invoke(CreateRectangleState.INSTANCE);
+            ellipseTool.Click += (s, e) => SetCanvasStateEvent.Invoke(CreateEllipseState.INSTANCE);
         }
     }
 }

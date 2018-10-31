@@ -20,11 +20,7 @@ namespace Drawing_Toolkit {
         }
 
         private void InjectControlEvent() {
-            toolsControl.ToolSelectedEventHandler += (tool) => {
-                if (tool is SelectionTool) canvasControl.SetCanvasState(SelectionState.INSTANCE);
-                else if (tool is EllipseTool) canvasControl.SetCanvasState(CreateEllipseState.INSTANCE);
-                else if (tool is RectangleTool) canvasControl.SetCanvasState(CreateRectangleState.INSTANCE);
-            };
+            toolsControl.SetCanvasStateEvent += (state) => canvasControl.SetCanvasState(state);
         }
     }
 }
