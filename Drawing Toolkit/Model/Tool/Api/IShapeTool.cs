@@ -1,8 +1,8 @@
-﻿using Drawing_Toolkit.Model.Shape.Api;
+﻿using Drawing_Toolkit.Model.Drawing;
 using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Tool.Api {
     interface IShapeTool {
-        IShape CreateShape(Point from, Point to);
+        DrawingContext CreateDrawing(Point from, Point to);
     }
 }

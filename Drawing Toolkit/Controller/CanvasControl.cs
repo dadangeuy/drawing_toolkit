@@ -1,19 +1,23 @@
-﻿using Drawing_Toolkit.Model.Shape.Api;
-using Drawing_Toolkit.Model.Tool.Api;
-using System.Collections.Generic;
+﻿using Drawing_Toolkit.Model.Canvas;
+using Drawing_Toolkit.Model.Canvas.State;
+using Drawing_Toolkit.Model.Event;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Controller {
     class CanvasControl : Control {
-        public ITool Tool;
-        private Point mDownPoint;
-        private Point mUpPoint;
-        private LinkedList<IShape> shapes = new LinkedList<IShape>();
+        private CanvasContext canvas = new CanvasContext();
+        private MouseEventArgs mDownEvent;
+        private bool mHold = false;
+        private event MouseDragEventHandler MouseDrag; 
 
         public CanvasControl() {
             InitUI();
             InitCallback();
+        }
+
+        public void SetCanvasState(CanvasState state) {
+            canvas.SetState(state);
         }
 
         private void InitUI() {
@@ -22,37 +26,32 @@ namespace Drawing_Toolkit.Controller {
         }
 
         private void InitCallback() {
-            Paint += (s, e) => DrawShapes();
-            MouseDown += (s, e) => mDownPoint = new Point(e.X, e.Y);
-            MouseUp += (s, e) => mUpPoint = new Point(e.X, e.Y);
-            MouseUp += (s, e) => ExecuteShapeTool();
-            MouseUp += (s, e) => ExecuteSelectionTool();
+            InitMouseDragEvent();
+            InitUpdateContextEvent();
+            InitRenderingEvent();
         }
 
-        private void DrawShapes() {
-            Graphics g = CreateGraphics();
-            foreach (IShape shape in shapes)
-                shape.Draw(g);
+        private void InitMouseDragEvent() {
+            MouseDown += (s, e) => {
+                mDownEvent = e;
+                mHold = true;
+            };
+            MouseUp += (s, e) => {
+                if (mHold) {
+                    MouseDrag.Invoke(mDownEvent, e);
+                }
+                mHold = false;
+            };
         }
 
-        private void ExecuteShapeTool() {
-            if (Tool is IShapeTool shapeTool) {
-                IShape shape = shapeTool.CreateShape(mDownPoint, mUpPoint);
-                shapes.AddFirst(shape);
-                Repaint();
-            }
+        private void InitUpdateContextEvent() {
+            MouseDrag += (e, e2) => canvas.Drag(new Point(e.X, e.Y), new Point(e2.X, e2.Y));
+            MouseUp += (s, e) => canvas.Click(new Point(e.X, e.Y));
         }
 
-        private void ExecuteSelectionTool() {
-            if (Tool is IPointerTool pointerTool) {
-                pointerTool.Drag(mDownPoint, mUpPoint, shapes);
-                Repaint();
-            }
-        }
-
-        private void Repaint() {
-            Invalidate();
-            Update();
+        private void InitRenderingEvent() {
+            Paint += (s, e) => canvas.Render(e.Graphics);
+            MouseUp += (s, e) => Invalidate();
         }
     }
 }

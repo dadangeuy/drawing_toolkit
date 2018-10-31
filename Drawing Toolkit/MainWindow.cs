@@ -1,4 +1,6 @@
 ﻿using Drawing_Toolkit.Controller;
+using Drawing_Toolkit.Model.Canvas.State;
+using Drawing_Toolkit.Model.Tool.Impl;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit {
@@ -18,7 +20,11 @@ namespace Drawing_Toolkit {
         }
 
         private void InjectControlEvent() {
-            toolsControl.ToolSelectedEventHandler += (tool) => canvasControl.Tool = tool;
+            toolsControl.ToolSelectedEventHandler += (tool) => {
+                if (tool is SelectionTool) canvasControl.SetCanvasState(SelectionState.INSTANCE);
+                else if (tool is EllipseTool) canvasControl.SetCanvasState(CreateEllipseState.INSTANCE);
+                else if (tool is RectangleTool) canvasControl.SetCanvasState(CreateRectangleState.INSTANCE);
+            };
         }
     }
 }

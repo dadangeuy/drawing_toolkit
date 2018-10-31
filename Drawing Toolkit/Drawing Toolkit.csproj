@@ -58,13 +58,21 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Canvas\CanvasContext.cs" />
+    <Compile Include="Model\Canvas\State\CanvasState.cs" />
+    <Compile Include="Model\Canvas\State\CreateEllipseState.cs" />
+    <Compile Include="Model\Canvas\State\CreateRectangleState.cs" />
+    <Compile Include="Model\Canvas\State\DrawingShape.cs" />
+    <Compile Include="Model\Canvas\State\SelectionState.cs" />
+    <Compile Include="Model\Drawing\DrawingContext.cs" />
+    <Compile Include="Model\Drawing\Shape\EllipseShape.cs" />
+    <Compile Include="Model\Drawing\Shape\IShape.cs" />
+    <Compile Include="Model\Drawing\Shape\RectangleShape.cs" />
+    <Compile Include="Model\Drawing\State\EditState.cs" />
+    <Compile Include="Model\Drawing\State\DrawingState.cs" />
+    <Compile Include="Model\Drawing\State\LockState.cs" />
+    <Compile Include="Model\Event\MouseDragEventHandler.cs" />
     <Compile Include="Model\Event\ToolSelectedEventHandler.cs" />
-    <Compile Include="Model\Shape\Api\IDrawable.cs" />
-    <Compile Include="Model\Shape\Api\ISelectable.cs" />
-    <Compile Include="Model\Shape\Api\IShape.cs" />
-    <Compile Include="Model\Shape\Impl\EllipseShape.cs" />
-    <Compile Include="Model\Shape\Impl\RectangleShape.cs" />
-    <Compile Include="Model\Tool\Api\IPointerTool.cs" />
     <Compile Include="Model\Tool\Api\IShapeTool.cs" />
     <Compile Include="Model\Tool\Api\ITool.cs" />
     <Compile Include="Model\Tool\Impl\EllipseTool.cs" />
