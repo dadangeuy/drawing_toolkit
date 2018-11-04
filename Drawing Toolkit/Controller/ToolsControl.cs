@@ -24,7 +24,7 @@ namespace Drawing_Toolkit.Controller {
         }
 
         private void InitCallback() {
-            selectionTool.Click += (s, e) => SetCanvasStateEvent.Invoke(SelectionState.INSTANCE);
+            selectionTool.Click += (s, e) => SetCanvasStateEvent.Invoke(SelectState.INSTANCE);
             rectangleTool.Click += (s, e) => SetCanvasStateEvent.Invoke(CreateRectangleState.INSTANCE);
             ellipseTool.Click += (s, e) => SetCanvasStateEvent.Invoke(CreateEllipseState.INSTANCE);
         }
