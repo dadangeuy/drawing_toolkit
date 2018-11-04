@@ -10,6 +10,7 @@ namespace Drawing_Toolkit.Controller {
         public CanvasControl() {
             InitUI();
             InitCallback();
+            DoubleBuffered = true;  // improve rendering performance
         }
 
         public void SetCanvasState(CanvasState state) {
@@ -22,33 +23,25 @@ namespace Drawing_Toolkit.Controller {
         }
 
         private void InitCallback() {
-            InitMouseDragEvent();
-            InitRenderingEvent();
-            InitLazyRenderingUpdate();
+            InitMouseEvent();
+            InitRenderEvent();
         }
 
-        private void InitMouseDragEvent() {
+        private void InitMouseEvent() {
             MouseDown += (s, e) => canvas.MouseDown(e.Location);
             MouseMove += (s, e) => canvas.MouseMove(e.Location);
             MouseUp += (s, e) => canvas.MouseUp(e.Location);
         }
 
-        private void InitRenderingEvent() {
+        private void InitRenderEvent() {
             Paint += (s, e) => canvas.Render(e.Graphics);
+            InitRenderFpsLimit();
         }
 
-        private void InitLazyRenderingUpdate() {
-            MouseDown += (s, e) => TriggerRendering();
-            MouseMove += (s, e) => {
-                bool holdMouse = e.Button.HasFlag(MouseButtons.Left);
-                if (holdMouse) TriggerRendering();
-            };
-            MouseUp += (s, e) => TriggerRendering();
-        }
-
-        public void TriggerRendering() {
-            Invalidate();
-            Update();
+        private void InitRenderFpsLimit() {
+            var timer = new System.Timers.Timer(1000.0f / 60.0f);
+            timer.Elapsed += (s, e) => Invalidate();
+            timer.Start();
         }
     }
 }
