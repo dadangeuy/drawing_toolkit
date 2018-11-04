@@ -31,6 +31,12 @@ namespace Drawing_Toolkit.Controller {
             MouseDown += (s, e) => canvas.MouseDown(e.Location);
             MouseMove += (s, e) => canvas.MouseMove(e.Location);
             MouseUp += (s, e) => canvas.MouseUp(e.Location);
+            MouseDown += (s, e) => {
+                bool holdShift = ModifierKeys == Keys.Shift;
+                if (holdShift) {
+                    System.Console.WriteLine("mencet shift");
+                }
+            };
         }
 
         private void InitRenderEvent() {

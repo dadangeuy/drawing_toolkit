@@ -6,7 +6,7 @@ using System.Drawing;
 namespace Drawing_Toolkit.Model.Canvas {
     class CanvasContext {
         private CanvasState state = SelectionState.INSTANCE;
-        public List<DrawingContext> Drawings { get; } = new List<DrawingContext>();
+        public List<DrawingContext> Drawings { get; } = new List<DrawingContext>(100);
 
         public void SetState(CanvasState state) {
             this.state = state;
