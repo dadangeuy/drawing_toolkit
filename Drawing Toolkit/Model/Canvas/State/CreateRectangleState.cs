@@ -3,6 +3,7 @@ using System;
 using Drawing_Toolkit.Model.Drawing.Shape;
 using Drawing_Toolkit.Model.Drawing;
 using Drawing_Toolkit.Model.Drawing.State;
+using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
     class CreateRectangleState : CanvasState {
@@ -13,21 +14,21 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         private Point initialLocation;
         private bool resizeDrawing = false;
 
-        public override void MouseDown(CanvasContext context, Point location) {
+        public override void MouseDown(CanvasContext context, MouseEventArgs args) {
             drawing = new DrawingContext(new RectangleShape());
             context.Drawings.Add(drawing);
 
-            initialLocation = location;
+            initialLocation = args.Location;
             resizeDrawing = true;
         }
 
-        public override void MouseMove(CanvasContext context, Point location) {
+        public override void MouseMove(CanvasContext context, MouseEventArgs args) {
             if (resizeDrawing) {
-                drawing.Resize(initialLocation, location);
+                drawing.Resize(initialLocation, args.Location);
             }
         }
 
-        public override void MouseUp(CanvasContext context, Point location) {
+        public override void MouseUp(CanvasContext context, MouseEventArgs args) {
             drawing.State = LockState.INSTANCE;
             resizeDrawing = false;
         }

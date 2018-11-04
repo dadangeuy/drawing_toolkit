@@ -11,7 +11,8 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             if (args.KeyCode == Keys.ShiftKey) context.State = SelectState.INSTANCE;
         }
 
-        public override void MouseDown(CanvasContext context, Point location) {
+        public override void MouseDown(CanvasContext context, MouseEventArgs args) {
+            var location = args.Location;
             foreach (var drawing in context.Drawings) {
                 if (drawing.Intersect(location)) {
                     drawing.State = EditState.INSTANCE;

@@ -28,9 +28,9 @@ namespace Drawing_Toolkit.Controller {
         }
 
         private void InitMouseEvent() {
-            MouseDown += (s, args) => canvas.MouseDown(args.Location);
-            MouseMove += (s, args) => canvas.MouseMove(args.Location);
-            MouseUp += (s, args) => canvas.MouseUp(args.Location);
+            MouseDown += (s, args) => canvas.MouseDown(args);
+            MouseMove += (s, args) => canvas.MouseMove(args);
+            MouseUp += (s, args) => canvas.MouseUp(args);
             KeyDown += (s, args) => canvas.KeyDown(args);
             KeyUp += (s, args) => canvas.KeyUp(args);
         }

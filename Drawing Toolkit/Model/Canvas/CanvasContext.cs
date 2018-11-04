@@ -11,16 +11,16 @@ namespace Drawing_Toolkit.Model.Canvas {
 
         public List<DrawingContext> Drawings { get; } = new List<DrawingContext>(100);
 
-        public void MouseDown(Point location) {
-            State.MouseDown(this, location);
+        public void MouseDown(MouseEventArgs args) {
+            State.MouseDown(this, args);
         }
 
-        public void MouseMove(Point location) {
-            State.MouseMove(this, location);
+        public void MouseMove(MouseEventArgs args) {
+            State.MouseMove(this, args);
         }
 
-        public void MouseUp(Point location) {
-            State.MouseUp(this, location);
+        public void MouseUp(MouseEventArgs args) {
+            State.MouseUp(this, args);
         }
 
         public void KeyDown(KeyEventArgs args) {
