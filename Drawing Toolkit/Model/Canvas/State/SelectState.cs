@@ -11,20 +11,15 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         }
 
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
-            var location = args.Location;
-            foreach (var drawing in context.Drawings) {
-                if (drawing.Intersect(location)) {
-                    drawing.State = EditState.INSTANCE;
-                    context.State = MoveState.INSTANCE;
-                    context.MouseDown(args);
-                    return;
-                }
-            }
-        }
-
-        public override void MouseUp(CanvasContext context, MouseEventArgs args) {
             foreach (var drawing in context.Drawings) {
                 drawing.State = LockState.INSTANCE;
+            }
+            foreach (var drawing in context.Drawings) {
+                if (drawing.Intersect(args.Location)) {
+                    drawing.State = EditState.INSTANCE;
+                    context.State = MoveState.INSTANCE;
+                    return;
+                }
             }
         }
     }

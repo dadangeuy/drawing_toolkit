@@ -1,5 +1,4 @@
 ﻿using Drawing_Toolkit.Model.Drawing.State;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
@@ -8,7 +7,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         private GroupSelectState() { }
 
         public override void KeyUp(CanvasContext context, KeyEventArgs args) {
-            if (args.KeyCode == Keys.ShiftKey) context.State = SelectState.INSTANCE;
+            if (args.KeyCode == Keys.ShiftKey) context.State = MoveState.INSTANCE;
         }
 
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
