@@ -1,18 +1,36 @@
-﻿using Drawing_Toolkit.Model.Drawing;
+﻿using System.Drawing;
+using System;
 using Drawing_Toolkit.Model.Drawing.Shape;
-using System.Collections.Generic;
-using System.Drawing;
+using Drawing_Toolkit.Model.Drawing;
+using Drawing_Toolkit.Model.Drawing.State;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
     class CreateRectangleState : CanvasState {
         public static readonly CreateRectangleState INSTANCE = new CreateRectangleState();
         private CreateRectangleState() { }
 
-        public override void DragDrawing(LinkedList<DrawingContext> drawings, Point from, Point to) {
-            RectangleShape shape = new RectangleShape();
-            shape.SetContainer(from, to);
-            DrawingContext drawing = new DrawingContext(shape);
-            drawings.AddFirst(drawing);
+        private DrawingContext drawing;
+        private Point mouseDownLocation;
+        private bool resizeDrawing = false;
+
+        public override void MouseDown(CanvasContext context, Point location) {
+            drawing = new DrawingContext(new RectangleShape());
+            context.Drawings.AddFirst(drawing);
+
+            mouseDownLocation = location;
+            resizeDrawing = true;
+        }
+
+        public override void MouseMove(CanvasContext context, Point location) {
+            if (resizeDrawing) {
+                drawing.Resize(mouseDownLocation, location);
+            }
+        }
+
+        public override void MouseUp(CanvasContext context, Point location) {
+            drawing.Resize(mouseDownLocation, location);
+            drawing.SetState(LockState.INSTANCE);
+            resizeDrawing = false;
         }
     }
 }

@@ -5,19 +5,15 @@ using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
     class DrawingContext {
-        private DrawingState state = LockState.INSTANCE;
+        private DrawingState state = EditState.INSTANCE;
         private readonly IShape shape;
 
         public DrawingContext(IShape shape) {
             this.shape = shape;
         }
 
-        public void Select() {
-            state = EditState.INSTANCE;
-        }
-
-        public void Deselect() {
-            state = LockState.INSTANCE;
+        public void SetState(DrawingState state) {
+            this.state = state;
         }
 
         public void Render() {
@@ -26,6 +22,10 @@ namespace Drawing_Toolkit.Model.Drawing {
 
         public void Move(Point offset) {
             state.Move(shape, offset);
+        }
+
+        public void Resize(Point from, Point to) {
+            state.Resize(shape, from, to);
         }
 
         public void SetGraphics(Graphics g) {

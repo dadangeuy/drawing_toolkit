@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
+using Drawing_Toolkit.Model.Drawing.State;
 using Drawing_Toolkit.Model.Drawing;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
@@ -7,23 +7,18 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly SelectionState INSTANCE = new SelectionState();
         private SelectionState() { }
 
-        public override void ClickDrawing(LinkedList<DrawingContext> drawings, Point location) {
-            foreach (var drawing in drawings)
-                drawing.Deselect();
-            foreach (var drawing in drawings)
-                if (drawing.Intersect(location)) {
-                    drawing.Select();
-                    break;
-                }
-        }
+        private DrawingContext drawing;
 
-        public override void DragDrawing(LinkedList<DrawingContext> drawings, Point from, Point to) {
-            foreach (var drawing in drawings)
-                if (drawing.Intersect(from)) {
-                    Point offset = new Point(to.X - from.X, to.Y - from.Y);
-                    drawing.Move(offset);
+        public override void MouseDown(CanvasContext context, Point location) {
+            if (drawing != null) drawing.SetState(LockState.INSTANCE);
+
+            foreach (var drawing in context.Drawings) {
+                if (drawing.Intersect(location)) {
+                    this.drawing = drawing;
+                    drawing.SetState(EditState.INSTANCE);
                     break;
                 }
+            }
         }
     }
 }

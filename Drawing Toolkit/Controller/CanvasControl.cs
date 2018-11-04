@@ -7,9 +7,6 @@ using System.Windows.Forms;
 namespace Drawing_Toolkit.Controller {
     class CanvasControl : Control {
         private CanvasContext canvas = new CanvasContext();
-        private event MouseDragEventHandler MouseDrag;
-        private MouseEventArgs mDownEvent;
-        private bool mHold = false;
 
         public CanvasControl() {
             InitUI();
@@ -27,31 +24,18 @@ namespace Drawing_Toolkit.Controller {
 
         private void InitCallback() {
             InitMouseDragEvent();
-            InitUpdateContextEvent();
             InitRenderingEvent();
         }
 
         private void InitMouseDragEvent() {
-            MouseDown += (s, e) => {
-                mDownEvent = e;
-                mHold = true;
-            };
-            MouseUp += (s, e) => {
-                if (mHold) {
-                    MouseDrag.Invoke(mDownEvent, e);
-                }
-                mHold = false;
-            };
-        }
-
-        private void InitUpdateContextEvent() {
-            MouseDrag += (e, e2) => canvas.Drag(new Point(e.X, e.Y), new Point(e2.X, e2.Y));
-            MouseDown += (s, e) => canvas.Click(new Point(e.X, e.Y));
+            MouseDown += (s, e) => canvas.MouseDown(e.Location);
+            MouseMove += (s, e) => canvas.MouseMove(e.Location);
+            MouseUp += (s, e) => canvas.MouseUp(e.Location);
         }
 
         private void InitRenderingEvent() {
             Paint += (s, e) => canvas.Render(e.Graphics);
-            MouseUp += (s, e) => Invalidate();
+            MouseMove += (s, e) => Invalidate();
         }
     }
 }

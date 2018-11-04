@@ -62,7 +62,6 @@
     <Compile Include="Model\Canvas\State\CanvasState.cs" />
     <Compile Include="Model\Canvas\State\CreateEllipseState.cs" />
     <Compile Include="Model\Canvas\State\CreateRectangleState.cs" />
-    <Compile Include="Model\Canvas\State\DrawingShape.cs" />
     <Compile Include="Model\Canvas\State\SelectionState.cs" />
     <Compile Include="Model\Drawing\DrawingContext.cs" />
     <Compile Include="Model\Drawing\Shape\ContainerShape.cs" />

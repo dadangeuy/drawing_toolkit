@@ -16,5 +16,9 @@ namespace Drawing_Toolkit.Model.Drawing.State {
         public override void Move(IShape shape, Point offset) {
             shape.Move(offset);
         }
+
+        public override void Resize(IShape shape, Point from, Point to) {
+            shape.SetContainer(from, to);
+        }
     }
 }
