@@ -7,9 +7,9 @@ using System.Windows.Forms;
 namespace Drawing_Toolkit.Controller {
     class CanvasControl : Control {
         private CanvasContext canvas = new CanvasContext();
+        private event MouseDragEventHandler MouseDrag;
         private MouseEventArgs mDownEvent;
         private bool mHold = false;
-        private event MouseDragEventHandler MouseDrag; 
 
         public CanvasControl() {
             InitUI();
