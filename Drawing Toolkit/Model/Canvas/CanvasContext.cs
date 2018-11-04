@@ -3,6 +3,7 @@ using Drawing_Toolkit.Model.Canvas.State;
 using Drawing_Toolkit.Model.Drawing;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Model.Canvas {
     class CanvasContext : StateContext<CanvasState> {
@@ -20,6 +21,14 @@ namespace Drawing_Toolkit.Model.Canvas {
 
         public void MouseUp(Point location) {
             State.MouseUp(this, location);
+        }
+
+        public void KeyDown(KeyEventArgs args) {
+            State.KeyDown(this, args);
+        }
+
+        public void KeyUp(KeyEventArgs args) {
+            State.KeyUp(this, args);
         }
 
         public void Render(Graphics graphics) {
