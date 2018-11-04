@@ -32,10 +32,8 @@ namespace Drawing_Toolkit.Model.Canvas {
         }
 
         public void Render(Graphics graphics) {
-            foreach (var drawing in Drawings) {
-                drawing.SetGraphics(graphics);
-                drawing.Render();
-            }
+            foreach (var drawing in Drawings)
+                drawing.Render(graphics);
         }
     }
 }

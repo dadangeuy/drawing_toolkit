@@ -4,15 +4,11 @@ using Drawing_Toolkit.Model.Drawing.State;
 using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
-    class DrawingContext : StateContext<DrawingState> {
+    class DrawingContext : StateContext<DrawingState>, IDrawing {
         private readonly IShape shape;
 
         public DrawingContext(IShape shape) : base(EditState.INSTANCE) {
             this.shape = shape;
-        }
-
-        public void Render() {
-            State.Render(shape);
         }
 
         public void Move(Point offset) {
@@ -23,12 +19,13 @@ namespace Drawing_Toolkit.Model.Drawing {
             State.Resize(shape, from, to);
         }
 
-        public void SetGraphics(Graphics g) {
-            shape.SetGraphics(g);
-        }
-
         public bool Intersect(Point location) {
             return shape.Intersect(location);
+        }
+
+        public void Render(Graphics graphics) {
+            shape.SetGraphics(graphics);
+            State.Render(shape);
         }
     }
 }
