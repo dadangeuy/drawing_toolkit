@@ -10,25 +10,24 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         private CreateRectangleState() { }
 
         private DrawingContext drawing;
-        private Point mouseDownLocation;
+        private Point initialLocation;
         private bool resizeDrawing = false;
 
         public override void MouseDown(CanvasContext context, Point location) {
             drawing = new DrawingContext(new RectangleShape());
             context.Drawings.Add(drawing);
 
-            mouseDownLocation = location;
+            initialLocation = location;
             resizeDrawing = true;
         }
 
         public override void MouseMove(CanvasContext context, Point location) {
             if (resizeDrawing) {
-                drawing.Resize(mouseDownLocation, location);
+                drawing.Resize(initialLocation, location);
             }
         }
 
         public override void MouseUp(CanvasContext context, Point location) {
-            drawing.Resize(mouseDownLocation, location);
             drawing.SetState(LockState.INSTANCE);
             resizeDrawing = false;
         }
