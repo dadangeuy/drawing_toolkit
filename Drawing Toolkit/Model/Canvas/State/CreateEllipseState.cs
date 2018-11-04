@@ -27,7 +27,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         }
 
         public override void MouseUp(CanvasContext context, Point location) {
-            drawing.SetState(LockState.INSTANCE);
+            drawing.State = LockState.INSTANCE;
             resizeDrawing = false;
         }
     }

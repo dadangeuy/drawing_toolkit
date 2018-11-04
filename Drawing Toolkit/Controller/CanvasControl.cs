@@ -14,7 +14,7 @@ namespace Drawing_Toolkit.Controller {
         }
 
         public void SetCanvasState(CanvasState state) {
-            canvas.SetState(state);
+            canvas.State = state;
         }
 
         private void InitUI() {

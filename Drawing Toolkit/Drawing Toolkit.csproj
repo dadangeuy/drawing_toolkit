@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\StateContext.cs" />
     <Compile Include="Controller\CanvasControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -63,7 +64,7 @@
     <Compile Include="Model\Canvas\State\CreateEllipseState.cs" />
     <Compile Include="Model\Canvas\State\CreateRectangleState.cs" />
     <Compile Include="Model\Canvas\State\MoveState.cs" />
-    <Compile Include="Model\Canvas\State\SelectionState.cs" />
+    <Compile Include="Model\Canvas\State\SelectState.cs" />
     <Compile Include="Model\Drawing\DrawingContext.cs" />
     <Compile Include="Model\Drawing\Shape\ContainerShape.cs" />
     <Compile Include="Model\Drawing\Shape\EllipseShape.cs" />

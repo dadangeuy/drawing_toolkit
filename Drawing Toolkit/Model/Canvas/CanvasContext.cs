@@ -1,27 +1,25 @@
-﻿using Drawing_Toolkit.Model.Canvas.State;
+﻿using Drawing_Toolkit.Common;
+using Drawing_Toolkit.Model.Canvas.State;
 using Drawing_Toolkit.Model.Drawing;
 using System.Collections.Generic;
 using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Canvas {
-    class CanvasContext {
-        private CanvasState state = SelectState.INSTANCE;
+    class CanvasContext : StateContext<CanvasState> {
+        public CanvasContext() : base(SelectState.INSTANCE) { }
+
         public List<DrawingContext> Drawings { get; } = new List<DrawingContext>(100);
 
-        public void SetState(CanvasState state) {
-            this.state = state;
-        }
-
         public void MouseDown(Point location) {
-            state.MouseDown(this, location);
+            State.MouseDown(this, location);
         }
 
         public void MouseMove(Point location) {
-            state.MouseMove(this, location);
+            State.MouseMove(this, location);
         }
 
         public void MouseUp(Point location) {
-            state.MouseUp(this, location);
+            State.MouseUp(this, location);
         }
 
         public void Render(Graphics graphics) {

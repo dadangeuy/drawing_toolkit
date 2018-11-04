@@ -20,7 +20,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         }
 
         public override void MouseUp(CanvasContext context, Point location) {
-            context.SetState(SelectState.INSTANCE);
+            context.State = SelectState.INSTANCE;
             context.MouseUp(location);
         }
     }

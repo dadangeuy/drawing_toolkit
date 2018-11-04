@@ -1,31 +1,26 @@
-﻿using Drawing_Toolkit.Model.Drawing.Shape;
+﻿using Drawing_Toolkit.Common;
+using Drawing_Toolkit.Model.Drawing.Shape;
 using Drawing_Toolkit.Model.Drawing.State;
-using System;
 using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
-    class DrawingContext {
-        private DrawingState state = EditState.INSTANCE;
+    class DrawingContext : StateContext<DrawingState> {
         private readonly IShape shape;
 
-        public DrawingContext(IShape shape) {
+        public DrawingContext(IShape shape) : base(EditState.INSTANCE) {
             this.shape = shape;
         }
 
-        public void SetState(DrawingState state) {
-            this.state = state;
-        }
-
         public void Render() {
-            state.Render(shape);
+            State.Render(shape);
         }
 
         public void Move(Point offset) {
-            state.Move(shape, offset);
+            State.Move(shape, offset);
         }
 
         public void Resize(Point from, Point to) {
-            state.Resize(shape, from, to);
+            State.Resize(shape, from, to);
         }
 
         public void SetGraphics(Graphics g) {

@@ -9,8 +9,8 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public override void MouseDown(CanvasContext context, Point location) {
             foreach (var drawing in context.Drawings) {
                 if (drawing.Intersect(location)) {
-                    drawing.SetState(EditState.INSTANCE);
-                    context.SetState(MoveState.INSTANCE);
+                    drawing.State = EditState.INSTANCE;
+                    context.State = MoveState.INSTANCE;
                     context.MouseDown(location);
                     return;
                 }
@@ -19,7 +19,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
 
         public override void MouseUp(CanvasContext context, Point location) {
             foreach (var drawing in context.Drawings) {
-                drawing.SetState(LockState.INSTANCE);
+                drawing.State = LockState.INSTANCE;
             }
         }
     }
