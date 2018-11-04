@@ -1,6 +1,5 @@
 ﻿using Drawing_Toolkit.Model.Canvas;
 using Drawing_Toolkit.Model.Canvas.State;
-using Drawing_Toolkit.Model.Event;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -25,6 +24,7 @@ namespace Drawing_Toolkit.Controller {
         private void InitCallback() {
             InitMouseDragEvent();
             InitRenderingEvent();
+            InitLazyRenderingUpdate();
         }
 
         private void InitMouseDragEvent() {
@@ -35,7 +35,20 @@ namespace Drawing_Toolkit.Controller {
 
         private void InitRenderingEvent() {
             Paint += (s, e) => canvas.Render(e.Graphics);
-            MouseMove += (s, e) => Invalidate();
+        }
+
+        private void InitLazyRenderingUpdate() {
+            MouseDown += (s, e) => TriggerRendering();
+            MouseMove += (s, e) => {
+                bool holdMouse = e.Button.HasFlag(MouseButtons.Left);
+                if (holdMouse) TriggerRendering();
+            };
+            MouseUp += (s, e) => TriggerRendering();
+        }
+
+        public void TriggerRendering() {
+            Invalidate();
+            Update();
         }
     }
 }

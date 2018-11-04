@@ -8,6 +8,8 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         private SelectionState() { }
 
         private DrawingContext drawing;
+        private Point mouseDownLocation;
+        private bool moveDrawing = false;
 
         public override void MouseDown(CanvasContext context, Point location) {
             if (drawing != null) drawing.SetState(LockState.INSTANCE);
@@ -16,8 +18,20 @@ namespace Drawing_Toolkit.Model.Canvas.State {
                 if (drawing.Intersect(location)) {
                     this.drawing = drawing;
                     drawing.SetState(EditState.INSTANCE);
-                    break;
+
+                    mouseDownLocation = location;
+                    moveDrawing = true;
+
+                    return;
                 }
+            }
+        }
+
+        public override void MouseUp(CanvasContext context, Point location) {
+            if (moveDrawing) {
+                Point offset = new Point(location.X - mouseDownLocation.X, location.Y - mouseDownLocation.Y);
+                drawing.Move(offset);
+                moveDrawing = false;
             }
         }
     }
