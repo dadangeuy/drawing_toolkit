@@ -1,5 +1,4 @@
-﻿using System;
-using Drawing_Toolkit.Model.Drawing.Shape;
+﻿using Drawing_Toolkit.Model.Drawing.Shape;
 
 namespace Drawing_Toolkit.Model.Drawing.State {
     class LockState : DrawingState {
@@ -8,7 +7,6 @@ namespace Drawing_Toolkit.Model.Drawing.State {
 
         public override void Render(IShape shape) {
             shape.RenderShape();
-            Console.WriteLine("Render Lock State");
         }
     }
 }
