@@ -75,11 +75,6 @@
     <Compile Include="Model\Drawing\State\LockState.cs" />
     <Compile Include="Model\Event\MouseDragEventHandler.cs" />
     <Compile Include="Model\Event\SetCanvasStateEventHandler.cs" />
-    <Compile Include="Model\Tool\Api\IShapeTool.cs" />
-    <Compile Include="Model\Tool\Api\ITool.cs" />
-    <Compile Include="Model\Tool\Impl\EllipseTool.cs" />
-    <Compile Include="Model\Tool\Impl\RectangleTool.cs" />
-    <Compile Include="Model\Tool\Impl\SelectionTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\RectangleUtil.cs" />

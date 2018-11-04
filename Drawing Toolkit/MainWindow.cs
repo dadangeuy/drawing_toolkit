@@ -1,6 +1,4 @@
 ﻿using Drawing_Toolkit.Controller;
-using Drawing_Toolkit.Model.Canvas.State;
-using Drawing_Toolkit.Model.Tool.Impl;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit {
