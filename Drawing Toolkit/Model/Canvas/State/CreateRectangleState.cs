@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System;
 using Drawing_Toolkit.Model.Drawing.Shape;
 using Drawing_Toolkit.Model.Drawing;
 using Drawing_Toolkit.Model.Drawing.State;
