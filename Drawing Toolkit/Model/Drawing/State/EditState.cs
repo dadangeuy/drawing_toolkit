@@ -16,7 +16,7 @@ namespace Drawing_Toolkit.Model.Drawing.State {
         }
 
         public override void Resize(IShape shape, Point from, Point to) {
-            shape.SetContainer(from, to);
+            shape.SetShape(from, to);
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using Drawing_Toolkit.Util;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
 
 namespace Drawing_Toolkit.Model.Drawing.Shape {
     abstract class ContainerShape : IShape {
-        private static readonly Pen SHAPE_PEN = new Pen(Color.Black);
-        private static readonly Pen CONTAINER_PEN = new Pen(Color.Red) {
+        protected static readonly Pen SHAPE_PEN = new Pen(Color.Black);
+        protected static readonly Pen CONTAINER_PEN = new Pen(Color.Red) {
             DashStyle = DashStyle.Dot
         };
         private Rectangle container;
@@ -16,11 +15,11 @@ namespace Drawing_Toolkit.Model.Drawing.Shape {
             this.graphics = graphics;
         }
 
-        public void SetContainer(Point from, Point to) {
+        public virtual void SetShape(Point from, Point to) {
             container = RectangleUtil.FromPoint(from, to);
         }
 
-        public void Move(Point offset) {
+        public virtual void Move(Point offset) {
             container.Offset(offset);
         }
 
