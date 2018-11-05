@@ -8,6 +8,10 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly SelectState INSTANCE = new SelectState();
         private SelectState() { }
 
+        public override void KeyDown(CanvasContext context, KeyEventArgs args) {
+            if (args.KeyCode == Keys.ShiftKey) context.State = MultiSelectState.INSTANCE;
+        }
+
         public override void KeyUp(CanvasContext context, KeyEventArgs args) {
             if (args.Control && args.KeyCode == Keys.G) {
                 var editDrawings = GetAllDrawingInEditState(context);
@@ -39,6 +43,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
                     context.State = MoveState.INSTANCE;
                     context.MouseDown(args);
                 } else {
+                    LockAllDrawing(context);
                     intersectDrawing.State = EditState.INSTANCE;
                 }
             }
