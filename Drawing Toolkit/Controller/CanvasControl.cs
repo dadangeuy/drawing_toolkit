@@ -37,11 +37,11 @@ namespace Drawing_Toolkit.Controller {
 
         private void InitRenderEvent() {
             Paint += (s, e) => canvas.Render(e.Graphics);
-            InitRenderFpsLimit();
+            InitPeriodicRender();
         }
 
-        private void InitRenderFpsLimit() {
-            var timer = new System.Timers.Timer(1000.0f / 60.0f);
+        private void InitPeriodicRender() {
+            var timer = new System.Timers.Timer(1000/70); // FPS
             timer.Elapsed += (s, e) => Invalidate();
             timer.Start();
         }
