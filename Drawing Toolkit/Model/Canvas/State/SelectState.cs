@@ -12,9 +12,6 @@ namespace Drawing_Toolkit.Model.Canvas.State {
 
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
             foreach (var drawing in context.Drawings) {
-                drawing.State = LockState.INSTANCE;
-            }
-            foreach (var drawing in context.Drawings) {
                 if (drawing.Intersect(args.Location)) {
                     drawing.State = EditState.INSTANCE;
                     context.State = MoveState.INSTANCE;

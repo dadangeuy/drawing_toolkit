@@ -4,26 +4,26 @@ using Drawing_Toolkit.Model.Drawing.State;
 using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
-    class DrawingContext : StateContext<DrawingState>, IDrawing {
+    class DrawingContext : DrawingApi {
         private readonly IShape shape;
 
-        public DrawingContext(IShape shape) : base(EditState.INSTANCE) {
+        public DrawingContext(IShape shape) {
             this.shape = shape;
         }
 
-        public void Move(Point offset) {
+        public override void Move(Point offset) {
             State.Move(shape, offset);
         }
 
-        public void Resize(Point from, Point to) {
+        public override void Resize(Point from, Point to) {
             State.Resize(shape, from, to);
         }
 
-        public bool Intersect(Point location) {
+        public override bool Intersect(Point location) {
             return shape.Intersect(location);
         }
 
-        public void Render(Graphics graphics) {
+        public override void Render(Graphics graphics) {
             shape.SetGraphics(graphics);
             State.Render(shape);
         }

@@ -9,7 +9,7 @@ namespace Drawing_Toolkit.Model.Canvas {
     class CanvasContext : StateContext<CanvasState> {
         public CanvasContext() : base(SelectState.INSTANCE) { }
 
-        public List<DrawingContext> Drawings { get; } = new List<DrawingContext>(100);
+        public LinkedList<DrawingApi> Drawings { get; } = new LinkedList<DrawingApi>();
 
         public void MouseDown(MouseEventArgs args) {
             State.MouseDown(this, args);

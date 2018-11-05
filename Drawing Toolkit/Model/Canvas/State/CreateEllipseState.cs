@@ -15,7 +15,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
 
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
             drawing = new DrawingContext(new EllipseShape());
-            context.Drawings.Add(drawing);
+            context.Drawings.AddFirst(drawing);
 
             initialLocation = args.Location;
             resizeDrawing = true;

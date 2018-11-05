@@ -1,4 +1,6 @@
-﻿using Drawing_Toolkit.Model.Drawing.State;
+﻿using Drawing_Toolkit.Model.Drawing;
+using Drawing_Toolkit.Model.Drawing.State;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
@@ -6,8 +8,8 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly GroupSelectState INSTANCE = new GroupSelectState();
         private GroupSelectState() { }
 
-        public override void KeyUp(CanvasContext context, KeyEventArgs args) {
-            if (args.KeyCode == Keys.ShiftKey) context.State = MoveState.INSTANCE;
+        public override void KeyDown(CanvasContext context, KeyEventArgs args) {
+            if (args.Control && args.KeyCode == Keys.G) GroupDrawing(context);
         }
 
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
@@ -18,6 +20,19 @@ namespace Drawing_Toolkit.Model.Canvas.State {
                     return;
                 }
             }
+        }
+
+        private void GroupDrawing(CanvasContext context) {
+            var groupDrawingList = new LinkedList<DrawingApi>();
+            foreach (var drawing in context.Drawings)
+                if (drawing.State == EditState.INSTANCE)
+                    groupDrawingList.AddLast(drawing);
+
+            var groupDrawing = new GroupDrawingContext(groupDrawingList);
+            context.Drawings.AddLast(groupDrawing);
+
+            foreach (var drawing in groupDrawingList)
+                context.Drawings.Remove(drawing);
         }
     }
 }
