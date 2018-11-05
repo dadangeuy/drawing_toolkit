@@ -19,7 +19,9 @@ namespace Drawing_Toolkit.Controller {
         private void InitUI() {
             Dock = DockStyle.Fill;
             BackColor = Color.White;
-            DoubleBuffered = true;  // improve rendering performance
+            // reduce flickering
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
 
         private void InitCallback() {
