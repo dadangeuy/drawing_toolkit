@@ -6,19 +6,18 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly MoveState INSTANCE = new MoveState();
         private MoveState() { }
 
-        private Point initialLocation;
-
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
-            initialLocation = args.Location;
+            context.InitialLocation = args.Location;
         }
 
         public override void MouseMove(CanvasContext context, MouseEventArgs args) {
             var location = args.Location;
+            var initialLocation = context.InitialLocation;
             foreach (var drawing in context.Drawings) {
                 var offset = new Point(location.X - initialLocation.X, location.Y - initialLocation.Y);
                 drawing.Move(offset);
             }
-            initialLocation = args.Location;
+            context.InitialLocation = location;
         }
 
         public override void MouseUp(CanvasContext context, MouseEventArgs args) {

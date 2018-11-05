@@ -1,6 +1,4 @@
-﻿using Drawing_Toolkit.Common;
-using Drawing_Toolkit.Model.Drawing.Shape;
-using Drawing_Toolkit.Model.Drawing.State;
+﻿using Drawing_Toolkit.Model.Drawing.Shape;
 using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
