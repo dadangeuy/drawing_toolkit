@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
     abstract class DrawingContext : StateContext<DrawingState> {
-        public static DrawingContext NULL = new EmptyDrawingContext();
+        public static DrawingContext EMPTY = new EmptyDrawingContext();
 
         public DrawingContext() : base(EditState.INSTANCE) { }
         public abstract bool Intersect(Point location);
