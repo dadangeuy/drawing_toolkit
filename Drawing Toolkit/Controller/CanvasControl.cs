@@ -10,7 +10,6 @@ namespace Drawing_Toolkit.Controller {
         public CanvasControl() {
             InitUI();
             InitCallback();
-            DoubleBuffered = true;  // improve rendering performance
         }
 
         public void SetCanvasState(CanvasState state) {
@@ -20,6 +19,7 @@ namespace Drawing_Toolkit.Controller {
         private void InitUI() {
             Dock = DockStyle.Fill;
             BackColor = Color.White;
+            DoubleBuffered = true;  // improve rendering performance
         }
 
         private void InitCallback() {

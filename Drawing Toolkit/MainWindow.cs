@@ -8,8 +8,13 @@ namespace Drawing_Toolkit {
 
         public MainWindow() {
             InitializeComponent();
+            InitUI();
             InjectControlEvent();
             InjectControl();
+        }
+
+        private void InitUI() {
+            WindowState = FormWindowState.Maximized;
         }
 
         private void InjectControl() {
