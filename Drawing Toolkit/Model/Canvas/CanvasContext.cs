@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace Drawing_Toolkit.Model.Canvas {
     class CanvasContext : StateContext<CanvasState> {
         public LinkedList<DrawingContext> Drawings { get; } = new LinkedList<DrawingContext>();
-        public DrawingContext NewDrawing = new EmptyDrawingContext();
+        public DrawingContext NewDrawing = DrawingContext.NULL;
         public Point InitialLocation { get; set; }
 
         public CanvasContext() : base(SelectState.INSTANCE) { }

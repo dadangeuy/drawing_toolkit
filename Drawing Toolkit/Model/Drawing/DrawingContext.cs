@@ -4,10 +4,27 @@ using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
     abstract class DrawingContext : StateContext<DrawingState> {
+        public static DrawingContext NULL = new EmptyDrawingContext();
+
         public DrawingContext() : base(EditState.INSTANCE) { }
         public abstract bool Intersect(Point location);
         public abstract void Move(Point offset);
         public abstract void Resize(Point from, Point to);
         public abstract void Render(Graphics graphics);
+
+        private class EmptyDrawingContext : DrawingContext {
+            public override bool Intersect(Point location) {
+                return false;
+            }
+
+            public override void Move(Point offset) {
+            }
+
+            public override void Render(Graphics graphics) {
+            }
+
+            public override void Resize(Point from, Point to) {
+            }
+        }
     }
 }
