@@ -20,8 +20,8 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private LinkedList<DrawingApi> GetAllDrawingInEditState(CanvasContext context) {
-            var drawings = new LinkedList<DrawingApi>();
+        private LinkedList<DrawingContext> GetAllDrawingInEditState(CanvasContext context) {
+            var drawings = new LinkedList<DrawingContext>();
             foreach (var drawing in context.Drawings)
                 if (drawing.State == EditState.INSTANCE)
                     drawings.AddLast(drawing);
@@ -44,7 +44,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private DrawingApi GetIntersectDrawing(CanvasContext context, MouseEventArgs args) {
+        private DrawingContext GetIntersectDrawing(CanvasContext context, MouseEventArgs args) {
             foreach (var drawing in context.Drawings)
                 if (drawing.Intersect(args.Location))
                     return drawing;

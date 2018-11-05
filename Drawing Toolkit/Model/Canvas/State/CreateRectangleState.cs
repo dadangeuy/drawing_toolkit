@@ -9,12 +9,12 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly CreateRectangleState INSTANCE = new CreateRectangleState();
         private CreateRectangleState() { }
 
-        private DrawingContext drawing;
+        private SingleDrawingContext drawing;
         private Point initialLocation;
         private bool resizeDrawing = false;
 
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
-            drawing = new DrawingContext(new RectangleShape());
+            drawing = new SingleDrawingContext(new RectangleShape());
             context.Drawings.AddFirst(drawing);
 
             initialLocation = args.Location;

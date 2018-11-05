@@ -9,12 +9,12 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly CreateEllipseState INSTANCE = new CreateEllipseState();
         private CreateEllipseState() { }
 
-        private DrawingContext drawing;
+        private SingleDrawingContext drawing;
         private Point initialLocation;
         private bool resizeDrawing = false;
 
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
-            drawing = new DrawingContext(new EllipseShape());
+            drawing = new SingleDrawingContext(new EllipseShape());
             context.Drawings.AddFirst(drawing);
 
             initialLocation = args.Location;
