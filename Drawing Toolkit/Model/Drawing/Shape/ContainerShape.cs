@@ -6,6 +6,7 @@ namespace Drawing_Toolkit.Model.Drawing.Shape {
     abstract class ContainerShape : IShape {
         protected static readonly Pen SHAPE_PEN = new Pen(Color.Black);
         protected static readonly Pen CONTAINER_PEN = new Pen(Color.Red) {
+            Width = 2,
             DashStyle = DashStyle.Dot
         };
         private Rectangle container;
