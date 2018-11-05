@@ -1,11 +1,32 @@
 ﻿using Drawing_Toolkit.Model.Drawing;
 using Drawing_Toolkit.Model.Drawing.State;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
     class SelectState : CanvasState {
         public static readonly SelectState INSTANCE = new SelectState();
         private SelectState() { }
+
+        public override void KeyUp(CanvasContext context, KeyEventArgs args) {
+            if (args.Control && args.KeyCode == Keys.G) {
+                var editDrawings = GetAllDrawingInEditState(context);
+                if (editDrawings.Count > 1) {
+                    foreach (var drawing in editDrawings)
+                        context.Drawings.Remove(drawing);
+                    var GroupDrawing = new GroupDrawingContext(editDrawings);
+                    context.Drawings.AddFirst(GroupDrawing);
+                }
+            }
+        }
+
+        private LinkedList<DrawingApi> GetAllDrawingInEditState(CanvasContext context) {
+            var drawings = new LinkedList<DrawingApi>();
+            foreach (var drawing in context.Drawings)
+                if (drawing.State == EditState.INSTANCE)
+                    drawings.AddLast(drawing);
+            return drawings;
+        }
 
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
             var intersectDrawing = GetIntersectDrawing(context, args);

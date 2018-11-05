@@ -1,12 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using Drawing_Toolkit.Model.Drawing.State;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
     class GroupDrawingContext : DrawingApi {
-        private readonly LinkedList<DrawingApi> drawings;
+        private readonly LinkedList<DrawingApi> drawings = new LinkedList<DrawingApi>();
+        public override DrawingState State {
+            get => base.State;
+            set {
+                base.State = value;
+                foreach (var drawing in drawings) drawing.State = value;
+            }
+        }
 
         public GroupDrawingContext(LinkedList<DrawingApi> drawings) {
-            this.drawings = drawings;
+            foreach (var drawing in drawings)
+                this.drawings.AddLast(drawing);
         }
 
         public override bool Intersect(Point location) {
