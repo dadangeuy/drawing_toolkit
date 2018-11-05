@@ -1,14 +1,15 @@
 ﻿using Drawing_Toolkit.Model.Canvas.State;
 using Drawing_Toolkit.Model.Event;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Controller {
     class ToolsControl : ToolStrip {
         public event SetCanvasStateEventHandler SetCanvasStateEvent;
-        private readonly ToolStripItem selectionTool = new ToolStripButton("Selection");
-        private readonly ToolStripItem lineTool = new ToolStripButton("Line");
-        private readonly ToolStripItem rectangleTool = new ToolStripButton("Rectangle");
-        private readonly ToolStripItem ellipseTool = new ToolStripButton("Ellipse");
+        private readonly ToolStripItem selectionTool = new ToolStripButton(Image.FromFile("Asset/arrow.png"));
+        private readonly ToolStripItem lineTool = new ToolStripButton(Image.FromFile("Asset/line.png"));
+        private readonly ToolStripItem rectangleTool = new ToolStripButton(Image.FromFile("Asset/square.png"));
+        private readonly ToolStripItem ellipseTool = new ToolStripButton(Image.FromFile("Asset/circle.png"));
 
         public ToolsControl() {
             InitUI();

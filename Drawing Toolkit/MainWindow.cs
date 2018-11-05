@@ -18,8 +18,8 @@ namespace Drawing_Toolkit {
         }
 
         private void InjectControl() {
-            toolStripContainer1.ContentPanel.Controls.Add(canvasControl);
-            toolStripContainer1.TopToolStripPanel.Controls.Add(toolsControl);
+            toolStripContainer.ContentPanel.Controls.Add(canvasControl);
+            toolStripContainer.LeftToolStripPanel.Controls.Add(toolsControl);
         }
 
         private void InjectControlEvent() {
