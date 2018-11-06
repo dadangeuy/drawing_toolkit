@@ -10,6 +10,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
 
         public override void KeyDown(CanvasContext context, KeyEventArgs args) {
             if (args.KeyCode == Keys.ShiftKey) context.State = MultiSelectState.INSTANCE;
+            else if (args.KeyCode == Keys.Delete) context.State = DeleteState.INSTANCE;
         }
 
         public override void KeyUp(CanvasContext context, KeyEventArgs args) {
