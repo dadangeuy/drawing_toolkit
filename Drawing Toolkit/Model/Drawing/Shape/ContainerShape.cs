@@ -28,6 +28,10 @@ namespace Drawing_Toolkit.Model.Drawing.Shape {
             return container.Contains(location);
         }
 
+        public bool Intersect(Rectangle area) {
+            return container.IntersectsWith(area);
+        }
+
         public void RenderShape() {
             RenderInternal(graphics, SHAPE_PEN, container);
         }

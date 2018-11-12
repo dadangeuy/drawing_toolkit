@@ -25,6 +25,13 @@ namespace Drawing_Toolkit.Model.Drawing {
             return false;
         }
 
+        public override bool Intersect(Rectangle area) {
+            foreach (var drawing in drawings)
+                if (drawing.Intersect(area))
+                    return true;
+            return false;
+        }
+
         public override void Move(Point offset) {
             foreach (var drawing in drawings)
                 drawing.Move(offset);

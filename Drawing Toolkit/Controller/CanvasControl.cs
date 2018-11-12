@@ -38,7 +38,7 @@ namespace Drawing_Toolkit.Controller {
         }
 
         private void InitRenderEvent() {
-            Paint += (s, e) => canvas.Render(e.Graphics);
+            Paint += (s, e) => canvas.Render(e.Graphics, e.ClipRectangle);
             InitPeriodicRender();
         }
 

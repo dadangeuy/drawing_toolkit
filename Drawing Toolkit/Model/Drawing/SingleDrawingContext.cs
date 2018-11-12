@@ -21,6 +21,10 @@ namespace Drawing_Toolkit.Model.Drawing {
             return shape.Intersect(location);
         }
 
+        public override bool Intersect(Rectangle area) {
+            return shape.Intersect(area);
+        }
+
         public override void Render(Graphics graphics) {
             shape.SetGraphics(graphics);
             State.Render(shape);

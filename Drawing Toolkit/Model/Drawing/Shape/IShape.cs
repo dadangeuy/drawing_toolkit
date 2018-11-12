@@ -6,6 +6,7 @@ namespace Drawing_Toolkit.Model.Drawing.Shape {
         void SetShape(Point from, Point to);
         void Move(Point offset);
         bool Intersect(Point location);
+        bool Intersect(Rectangle area);
         void RenderShape();
         void RenderShapeContainer();
     }
