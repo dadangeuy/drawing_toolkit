@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Drawing_Toolkit.Model.Canvas.State {
+namespace Drawing_Toolkit.Model.CanvasModel.State {
     abstract class CanvasState {
         public virtual void KeyDown(Canvas context, KeyEventArgs args) { }
         public virtual void KeyUp(Canvas context, KeyEventArgs args) { }

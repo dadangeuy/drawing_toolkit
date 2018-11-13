@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Drawing_Toolkit.Model.Drawable.Shape {
+namespace Drawing_Toolkit.Model.DrawableModel.Shape {
     class LineShape : ContainerShape {
         private Point from;
         private Point to;

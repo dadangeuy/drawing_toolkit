@@ -2,7 +2,7 @@
 using System.Drawing.Drawing2D;
 using Drawing_Toolkit.Util;
 
-namespace Drawing_Toolkit.Model.Drawable.Shape {
+namespace Drawing_Toolkit.Model.DrawableModel.Shape {
     abstract class ContainerShape : IShape {
         protected static readonly Pen SHAPE_PEN = new Pen(Color.Black);
         protected static readonly Pen CONTAINER_PEN = new Pen(Color.Red) {

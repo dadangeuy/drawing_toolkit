@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Drawing_Toolkit.Model.Canvas.State {
+namespace Drawing_Toolkit.Model.CanvasModel.State {
     class MoveState : CanvasState {
         public static readonly MoveState INSTANCE = new MoveState();
         private MoveState() { }

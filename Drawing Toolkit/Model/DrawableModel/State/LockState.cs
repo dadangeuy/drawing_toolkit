@@ -1,6 +1,6 @@
-﻿using Drawing_Toolkit.Model.Drawable.Shape;
+﻿using Drawing_Toolkit.Model.DrawableModel.Shape;
 
-namespace Drawing_Toolkit.Model.Drawable.State {
+namespace Drawing_Toolkit.Model.DrawableModel.State {
     class LockState : DrawingState {
         public static readonly LockState INSTANCE = new LockState();
         private LockState() { }

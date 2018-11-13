@@ -1,7 +1,7 @@
 ﻿using Drawing_Toolkit.Controller;
-using Drawing_Toolkit.Model.Canvas.State;
 using System.Windows.Forms;
-using Drawing_Toolkit.Model.Canvas.State.Create;
+using Drawing_Toolkit.Model.CanvasModel.State;
+using Drawing_Toolkit.Model.CanvasModel.State.Create;
 
 namespace Drawing_Toolkit {
     public partial class MainWindow : Form {

@@ -1,13 +1,14 @@
-﻿using Drawing_Toolkit.Common;
-using Drawing_Toolkit.Model.Canvas.State;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Drawing_Toolkit.Common;
+using Drawing_Toolkit.Model.CanvasModel.State;
+using Drawing_Toolkit.Model.DrawableModel;
 
-namespace Drawing_Toolkit.Model.Canvas {
+namespace Drawing_Toolkit.Model.CanvasModel {
     class Canvas : StateContext<CanvasState> {
-        public LinkedList<Drawable.Drawable> Drawings { get; } = new LinkedList<Drawable.Drawable>();
-        public Drawable.Drawable NewDrawing = Drawable.Drawable.EMPTY;
+        public LinkedList<Drawable> Drawings { get; } = new LinkedList<Drawable>();
+        public Drawable NewDrawing = Drawable.EMPTY;
         public Point InitialLocation { get; set; }
 
         public Canvas() : base(SelectState.INSTANCE) { }

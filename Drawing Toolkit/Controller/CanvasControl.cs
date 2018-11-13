@@ -1,7 +1,7 @@
-﻿using Drawing_Toolkit.Model.Canvas;
-using Drawing_Toolkit.Model.Canvas.State;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
+using Drawing_Toolkit.Model.CanvasModel;
+using Drawing_Toolkit.Model.CanvasModel.State;
 
 namespace Drawing_Toolkit.Controller {
     class CanvasControl : Control {

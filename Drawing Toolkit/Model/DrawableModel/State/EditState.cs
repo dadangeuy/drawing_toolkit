@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
-using Drawing_Toolkit.Model.Drawable.Shape;
+using Drawing_Toolkit.Model.DrawableModel.Shape;
 
-namespace Drawing_Toolkit.Model.Drawable.State {
+namespace Drawing_Toolkit.Model.DrawableModel.State {
     class EditState : DrawingState {
         public static readonly EditState INSTANCE = new EditState();
         private EditState() { }

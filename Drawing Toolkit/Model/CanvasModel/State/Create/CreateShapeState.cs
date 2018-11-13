@@ -1,7 +1,8 @@
 ﻿using System.Windows.Forms;
-using Drawing_Toolkit.Model.Drawable.State;
+using Drawing_Toolkit.Model.DrawableModel;
+using Drawing_Toolkit.Model.DrawableModel.State;
 
-namespace Drawing_Toolkit.Model.Canvas.State.Create {
+namespace Drawing_Toolkit.Model.CanvasModel.State.Create {
     abstract class CreateShapeState : CanvasState {
         public override void MouseDown(Canvas context, MouseEventArgs args) {
             var drawing = CreateDrawingInternal();
@@ -10,7 +11,7 @@ namespace Drawing_Toolkit.Model.Canvas.State.Create {
             context.InitialLocation = args.Location;
         }
 
-        protected abstract Drawable.Drawable CreateDrawingInternal();
+        protected abstract Drawable CreateDrawingInternal();
 
         public override void MouseMove(Canvas context, MouseEventArgs args) {
             var drawing = context.NewDrawing;
