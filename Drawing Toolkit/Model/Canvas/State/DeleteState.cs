@@ -1,7 +1,6 @@
-﻿using Drawing_Toolkit.Model.Drawing;
-using Drawing_Toolkit.Model.Drawing.State;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using Drawing_Toolkit.Model.Drawable.State;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
     class DeleteState : CanvasState {
@@ -16,15 +15,15 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private LinkedList<Drawable> GetDrawingInEditState(Canvas context) {
-            var drawings = new LinkedList<Drawable>();
+        private LinkedList<Drawable.Drawable> GetDrawingInEditState(Canvas context) {
+            var drawings = new LinkedList<Drawable.Drawable>();
             foreach (var drawing in context.Drawings)
                 if (drawing.State == EditState.INSTANCE)
                     drawings.AddLast(drawing);
             return drawings;
         }
 
-        private void RemoveAll(LinkedList<Drawable> sourceList, LinkedList<Drawable> removedList) {
+        private void RemoveAll(LinkedList<Drawable.Drawable> sourceList, LinkedList<Drawable.Drawable> removedList) {
             foreach (var removed in removedList)
                 sourceList.Remove(removed);
         }

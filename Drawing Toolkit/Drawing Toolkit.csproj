@@ -59,20 +59,20 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Canvas\CanvasContext.cs" />
+    <Compile Include="Model\Canvas\Canvas.cs" />
     <Compile Include="Model\Canvas\State\CanvasState.cs" />
-    <Compile Include="Model\Canvas\State\CreateLineState.cs" />
-    <Compile Include="Model\Canvas\State\CreateEllipseState.cs" />
-    <Compile Include="Model\Canvas\State\CreateRectangleState.cs" />
-    <Compile Include="Model\Canvas\State\CreateShapeState.cs" />
+    <Compile Include="Model\Canvas\State\Create\CreateEllipseState.cs" />
+    <Compile Include="Model\Canvas\State\Create\CreateLineState.cs" />
+    <Compile Include="Model\Canvas\State\Create\CreateRectangleState.cs" />
+    <Compile Include="Model\Canvas\State\Create\CreateShapeState.cs" />
     <Compile Include="Model\Canvas\State\DeleteState.cs" />
     <Compile Include="Model\Canvas\State\MoveState.cs" />
     <Compile Include="Model\Canvas\State\MultiSelectState.cs" />
     <Compile Include="Model\Canvas\State\SelectState.cs" />
-    <Compile Include="Model\Drawing\DrawingObject.cs" />
+    <Compile Include="Model\Drawing\Drawable.cs" />
+    <Compile Include="Model\Drawing\GroupDrawable.cs" />
     <Compile Include="Model\Drawing\Shape\LineShape.cs" />
-    <Compile Include="Model\Drawing\SingleDrawingObject.cs" />
-    <Compile Include="Model\Drawing\GroupDrawingObject.cs" />
+    <Compile Include="Model\Drawing\SingleDrawable.cs" />
     <Compile Include="Model\Drawing\Shape\ContainerShape.cs" />
     <Compile Include="Model\Drawing\Shape\EllipseShape.cs" />
     <Compile Include="Model\Drawing\Shape\IShape.cs" />
@@ -108,24 +108,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Asset\arrow.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Asset\circle.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Asset\line.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Asset\square.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Canvas\State\Create\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

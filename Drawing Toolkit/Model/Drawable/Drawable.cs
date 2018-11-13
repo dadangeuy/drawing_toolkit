@@ -1,8 +1,8 @@
-﻿using Drawing_Toolkit.Common;
-using Drawing_Toolkit.Model.Drawing.State;
-using System.Drawing;
+﻿using System.Drawing;
+using Drawing_Toolkit.Common;
+using Drawing_Toolkit.Model.Drawable.State;
 
-namespace Drawing_Toolkit.Model.Drawing {
+namespace Drawing_Toolkit.Model.Drawable {
     abstract class Drawable : StateContext<DrawingState> {
         public Drawable() : base(EditState.INSTANCE) { }
         public abstract bool Intersect(Point location);

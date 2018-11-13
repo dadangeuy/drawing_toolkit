@@ -1,7 +1,7 @@
-﻿using Drawing_Toolkit.Model.Drawing;
-using Drawing_Toolkit.Model.Drawing.State;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using Drawing_Toolkit.Model.Drawable;
+using Drawing_Toolkit.Model.Drawable.State;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
     class SelectState : CanvasState {
@@ -25,8 +25,8 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private LinkedList<Drawable> GetAllDrawingInEditState(Canvas context) {
-            var drawings = new LinkedList<Drawable>();
+        private LinkedList<Drawable.Drawable> GetAllDrawingInEditState(Canvas context) {
+            var drawings = new LinkedList<Drawable.Drawable>();
             foreach (var drawing in context.Drawings)
                 if (drawing.State == EditState.INSTANCE)
                     drawings.AddLast(drawing);
@@ -50,7 +50,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private Drawable GetIntersectDrawing(Canvas context, MouseEventArgs args) {
+        private Drawable.Drawable GetIntersectDrawing(Canvas context, MouseEventArgs args) {
             foreach (var drawing in context.Drawings)
                 if (drawing.Intersect(args.Location))
                     return drawing;

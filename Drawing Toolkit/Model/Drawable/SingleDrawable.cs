@@ -1,7 +1,7 @@
-﻿using Drawing_Toolkit.Model.Drawing.Shape;
-using System.Drawing;
+﻿using System.Drawing;
+using Drawing_Toolkit.Model.Drawable.Shape;
 
-namespace Drawing_Toolkit.Model.Drawing {
+namespace Drawing_Toolkit.Model.Drawable {
     class SingleDrawable : Drawable {
         private readonly IShape shape;
 

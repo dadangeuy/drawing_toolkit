@@ -1,6 +1,5 @@
-﻿using Drawing_Toolkit.Model.Drawing;
-using Drawing_Toolkit.Model.Drawing.State;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using Drawing_Toolkit.Model.Drawable.State;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
     class MultiSelectState : CanvasState {
@@ -12,7 +11,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         }
 
         public override void MouseDown(Canvas context, MouseEventArgs args) {
-            Drawable drawing = GetIntersectDrawing(context, args);
+            Drawable.Drawable drawing = GetIntersectDrawing(context, args);
             bool intersect = drawing != null;
             if (intersect) {
                 bool inEditState = drawing.State == EditState.INSTANCE;
@@ -21,7 +20,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private Drawable GetIntersectDrawing(Canvas context, MouseEventArgs args) {
+        private Drawable.Drawable GetIntersectDrawing(Canvas context, MouseEventArgs args) {
             foreach (var drawing in context.Drawings)
                 if (drawing.Intersect(args.Location))
                     return drawing;

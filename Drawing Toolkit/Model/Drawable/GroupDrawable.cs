@@ -1,8 +1,8 @@
-﻿using Drawing_Toolkit.Model.Drawing.State;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
+using Drawing_Toolkit.Model.Drawable.State;
 
-namespace Drawing_Toolkit.Model.Drawing {
+namespace Drawing_Toolkit.Model.Drawable {
     class GroupDrawable : Drawable {
         private readonly LinkedList<Drawable> drawings = new LinkedList<Drawable>();
         public override DrawingState State {
