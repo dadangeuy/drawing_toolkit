@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Drawing_Toolkit.Model.DrawableModel {
+namespace Drawing_Toolkit.Model.DrawableModel.Impl {
     class EmptyDrawable : Drawable {
         public static readonly EmptyDrawable INSTANCE = new EmptyDrawable();
 

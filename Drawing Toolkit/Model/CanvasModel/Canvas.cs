@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Drawing_Toolkit.Common;
 using Drawing_Toolkit.Model.CanvasModel.State;
 using Drawing_Toolkit.Model.DrawableModel;
+using Drawing_Toolkit.Model.DrawableModel.Impl;
 
 namespace Drawing_Toolkit.Model.CanvasModel {
     class Canvas : StateContext<CanvasState> {

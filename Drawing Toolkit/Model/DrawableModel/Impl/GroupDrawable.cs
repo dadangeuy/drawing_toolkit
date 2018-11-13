@@ -2,7 +2,7 @@
 using System.Drawing;
 using Drawing_Toolkit.Model.DrawableModel.State;
 
-namespace Drawing_Toolkit.Model.DrawableModel {
+namespace Drawing_Toolkit.Model.DrawableModel.Impl {
     class GroupDrawable : Drawable {
         private readonly LinkedList<Drawable> drawings = new LinkedList<Drawable>();
         public override DrawingState State {

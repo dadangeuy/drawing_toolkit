@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Drawing_Toolkit.Model.DrawableModel;
+using Drawing_Toolkit.Model.DrawableModel.Impl;
 using Drawing_Toolkit.Model.DrawableModel.State;
 
 namespace Drawing_Toolkit.Model.CanvasModel.State {
