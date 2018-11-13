@@ -8,17 +8,17 @@ namespace Drawing_Toolkit.Controller {
         public event EventHandler OnSelectLineTool;
         public event EventHandler OnSelectRectangleTool;
         public event EventHandler OnSelectEllipseTool;
-        private readonly ToolStripItem selectionTool = new ToolStripButton(Image.FromFile("Asset/arrow.png")) {
+        private readonly ToolStripItem selectionTool = new ToolStripButton("Selection") {
             CheckOnClick = true,
             Checked = true
         };
-        private readonly ToolStripItem lineTool = new ToolStripButton(Image.FromFile("Asset/line.png")) {
+        private readonly ToolStripItem lineTool = new ToolStripButton("Line") {
             CheckOnClick = true
         };
-        private readonly ToolStripItem rectangleTool = new ToolStripButton(Image.FromFile("Asset/square.png")) {
+        private readonly ToolStripItem rectangleTool = new ToolStripButton("Rectangle") {
             CheckOnClick = true
         };
-        private readonly ToolStripItem ellipseTool = new ToolStripButton(Image.FromFile("Asset/circle.png")) {
+        private readonly ToolStripItem ellipseTool = new ToolStripButton("Ellipse") {
             CheckOnClick = true
         };
 
