@@ -2,10 +2,10 @@
 using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
-    class SingleDrawingContext : DrawingContext {
+    class SingleDrawingObject : DrawingObject {
         private readonly IShape shape;
 
-        public SingleDrawingContext(IShape shape) {
+        public SingleDrawingObject(IShape shape) {
             this.shape = shape;
         }
 

@@ -6,8 +6,8 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly CreateRectangleState INSTANCE = new CreateRectangleState();
         private CreateRectangleState() { }
 
-        protected override DrawingContext CreateDrawingInternal() {
-            return new SingleDrawingContext(new RectangleShape());
+        protected override DrawingObject CreateDrawingInternal() {
+            return new SingleDrawingObject(new RectangleShape());
         }
     }
 }

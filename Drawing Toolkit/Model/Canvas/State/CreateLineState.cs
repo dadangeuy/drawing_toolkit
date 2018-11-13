@@ -6,8 +6,8 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly CreateLineState INSTANCE = new CreateLineState();
         private CreateLineState() { }
 
-        protected override DrawingContext CreateDrawingInternal() {
-            return new SingleDrawingContext(new LineShape());
+        protected override DrawingObject CreateDrawingInternal() {
+            return new SingleDrawingObject(new LineShape());
         }
     }
 }

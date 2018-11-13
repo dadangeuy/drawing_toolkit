@@ -6,8 +6,8 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly CreateEllipseState INSTANCE = new CreateEllipseState();
         private CreateEllipseState() { }
 
-        protected override DrawingContext CreateDrawingInternal() {
-            return new SingleDrawingContext(new EllipseShape());
+        protected override DrawingObject CreateDrawingInternal() {
+            return new SingleDrawingObject(new EllipseShape());
         }
     }
 }

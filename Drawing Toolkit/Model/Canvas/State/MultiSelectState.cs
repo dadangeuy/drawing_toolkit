@@ -12,7 +12,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         }
 
         public override void MouseDown(CanvasContext context, MouseEventArgs args) {
-            DrawingContext drawing = GetIntersectDrawing(context, args);
+            DrawingObject drawing = GetIntersectDrawing(context, args);
             bool intersect = drawing != null;
             if (intersect) {
                 bool inEditState = drawing.State == EditState.INSTANCE;
@@ -21,7 +21,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private DrawingContext GetIntersectDrawing(CanvasContext context, MouseEventArgs args) {
+        private DrawingObject GetIntersectDrawing(CanvasContext context, MouseEventArgs args) {
             foreach (var drawing in context.Drawings)
                 if (drawing.Intersect(args.Location))
                     return drawing;

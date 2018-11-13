@@ -11,7 +11,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             context.InitialLocation = args.Location;
         }
 
-        protected abstract DrawingContext CreateDrawingInternal();
+        protected abstract DrawingObject CreateDrawingInternal();
 
         public override void MouseMove(CanvasContext context, MouseEventArgs args) {
             var drawing = context.NewDrawing;

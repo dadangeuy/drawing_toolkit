@@ -19,14 +19,14 @@ namespace Drawing_Toolkit.Model.Canvas.State {
                 if (editDrawings.Count > 1) {
                     foreach (var drawing in editDrawings)
                         context.Drawings.Remove(drawing);
-                    var GroupDrawing = new GroupDrawingContext(editDrawings);
+                    var GroupDrawing = new GroupDrawingObject(editDrawings);
                     context.Drawings.AddFirst(GroupDrawing);
                 }
             }
         }
 
-        private LinkedList<DrawingContext> GetAllDrawingInEditState(CanvasContext context) {
-            var drawings = new LinkedList<DrawingContext>();
+        private LinkedList<DrawingObject> GetAllDrawingInEditState(CanvasContext context) {
+            var drawings = new LinkedList<DrawingObject>();
             foreach (var drawing in context.Drawings)
                 if (drawing.State == EditState.INSTANCE)
                     drawings.AddLast(drawing);
@@ -50,7 +50,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private DrawingContext GetIntersectDrawing(CanvasContext context, MouseEventArgs args) {
+        private DrawingObject GetIntersectDrawing(CanvasContext context, MouseEventArgs args) {
             foreach (var drawing in context.Drawings)
                 if (drawing.Intersect(args.Location))
                     return drawing;
