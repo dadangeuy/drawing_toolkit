@@ -1,11 +1,13 @@
-﻿using Drawing_Toolkit.Model.Canvas.State;
-using Drawing_Toolkit.Model.Event;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Controller {
     class ToolsControl : ToolStrip {
-        public event SetCanvasStateEventHandler SetCanvasStateEvent;
+        public event EventHandler OnSelectSelectionTool;
+        public event EventHandler OnSelectLineTool;
+        public event EventHandler OnSelectRectangleTool;
+        public event EventHandler OnSelectEllipseTool;
         private readonly ToolStripItem selectionTool = new ToolStripButton(Image.FromFile("Asset/arrow.png")) {
             CheckOnClick = true,
             Checked = true
@@ -33,17 +35,15 @@ namespace Drawing_Toolkit.Controller {
         }
 
         private void InitCallback() {
-            // Uncheck Callback
-            selectionTool.MouseDown += (s, e) => UncheckButtons();
-            lineTool.MouseDown += (s, e) => UncheckButtons();
-            rectangleTool.MouseDown += (s, e) => UncheckButtons();
-            ellipseTool.MouseDown += (s, e) => UncheckButtons();
+            selectionTool.MouseDown += (s, args) => UncheckButtons();
+            lineTool.MouseDown += (s, args) => UncheckButtons();
+            rectangleTool.MouseDown += (s, args) => UncheckButtons();
+            ellipseTool.MouseDown += (s, args) => UncheckButtons();
 
-            // Set Canvas Callback
-            selectionTool.Click += (s, e) => SetCanvasStateEvent.Invoke(SelectState.INSTANCE);
-            lineTool.Click += (s, e) => SetCanvasStateEvent.Invoke(CreateLineState.INSTANCE);
-            rectangleTool.Click += (s, e) => SetCanvasStateEvent.Invoke(CreateRectangleState.INSTANCE);
-            ellipseTool.Click += (s, e) => SetCanvasStateEvent.Invoke(CreateEllipseState.INSTANCE);
+            selectionTool.Click += (s, args) => OnSelectSelectionTool.Invoke(s, args);
+            lineTool.Click += (s, args) => OnSelectLineTool.Invoke(s, args);
+            rectangleTool.Click += (s, args) => OnSelectRectangleTool.Invoke(s, args);
+            ellipseTool.Click += (s, args) => OnSelectEllipseTool.Invoke(s, args);
         }
 
         private void UncheckButtons() {
