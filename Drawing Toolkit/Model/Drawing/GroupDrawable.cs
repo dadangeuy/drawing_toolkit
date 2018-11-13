@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 
 namespace Drawing_Toolkit.Model.Drawing {
-    class GroupDrawingObject : DrawingObject {
-        private readonly LinkedList<DrawingObject> drawings = new LinkedList<DrawingObject>();
+    class GroupDrawable : Drawable {
+        private readonly LinkedList<Drawable> drawings = new LinkedList<Drawable>();
         public override DrawingState State {
             get => base.State;
             set {
@@ -13,7 +13,7 @@ namespace Drawing_Toolkit.Model.Drawing {
             }
         }
 
-        public GroupDrawingObject(LinkedList<DrawingObject> drawings) {
+        public GroupDrawable(LinkedList<Drawable> drawings) {
             foreach (var drawing in drawings)
                 this.drawings.AddLast(drawing);
         }

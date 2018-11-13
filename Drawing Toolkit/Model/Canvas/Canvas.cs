@@ -6,12 +6,12 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Model.Canvas {
-    class CanvasContext : StateContext<CanvasState> {
-        public LinkedList<DrawingObject> Drawings { get; } = new LinkedList<DrawingObject>();
-        public DrawingObject NewDrawing = DrawingObject.EMPTY;
+    class Canvas : StateContext<CanvasState> {
+        public LinkedList<Drawable> Drawings { get; } = new LinkedList<Drawable>();
+        public Drawable NewDrawing = Drawable.EMPTY;
         public Point InitialLocation { get; set; }
 
-        public CanvasContext() : base(SelectState.INSTANCE) { }
+        public Canvas() : base(SelectState.INSTANCE) { }
 
         public void MouseDown(MouseEventArgs args) {
             State.MouseDown(this, args);

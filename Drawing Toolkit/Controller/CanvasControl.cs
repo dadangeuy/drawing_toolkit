@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Controller {
     class CanvasControl : Control {
-        private CanvasContext canvas = new CanvasContext();
+        private Canvas canvas = new Canvas();
 
         public CanvasControl() {
             InitUI();

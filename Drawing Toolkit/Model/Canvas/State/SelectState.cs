@@ -8,32 +8,32 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly SelectState INSTANCE = new SelectState();
         private SelectState() { }
 
-        public override void KeyDown(CanvasContext context, KeyEventArgs args) {
+        public override void KeyDown(Canvas context, KeyEventArgs args) {
             if (args.KeyCode == Keys.ShiftKey) context.State = MultiSelectState.INSTANCE;
             else if (args.KeyCode == Keys.Delete) context.State = DeleteState.INSTANCE;
         }
 
-        public override void KeyUp(CanvasContext context, KeyEventArgs args) {
+        public override void KeyUp(Canvas context, KeyEventArgs args) {
             if (args.Control && args.KeyCode == Keys.G) {
                 var editDrawings = GetAllDrawingInEditState(context);
                 if (editDrawings.Count > 1) {
                     foreach (var drawing in editDrawings)
                         context.Drawings.Remove(drawing);
-                    var GroupDrawing = new GroupDrawingObject(editDrawings);
+                    var GroupDrawing = new GroupDrawable(editDrawings);
                     context.Drawings.AddFirst(GroupDrawing);
                 }
             }
         }
 
-        private LinkedList<DrawingObject> GetAllDrawingInEditState(CanvasContext context) {
-            var drawings = new LinkedList<DrawingObject>();
+        private LinkedList<Drawable> GetAllDrawingInEditState(Canvas context) {
+            var drawings = new LinkedList<Drawable>();
             foreach (var drawing in context.Drawings)
                 if (drawing.State == EditState.INSTANCE)
                     drawings.AddLast(drawing);
             return drawings;
         }
 
-        public override void MouseDown(CanvasContext context, MouseEventArgs args) {
+        public override void MouseDown(Canvas context, MouseEventArgs args) {
             var intersectDrawing = GetIntersectDrawing(context, args);
             bool noIntersect = intersectDrawing == null;
             if (noIntersect) {
@@ -50,14 +50,14 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private DrawingObject GetIntersectDrawing(CanvasContext context, MouseEventArgs args) {
+        private Drawable GetIntersectDrawing(Canvas context, MouseEventArgs args) {
             foreach (var drawing in context.Drawings)
                 if (drawing.Intersect(args.Location))
                     return drawing;
             return null;
         }
 
-        private void LockAllDrawing(CanvasContext context) {
+        private void LockAllDrawing(Canvas context) {
             foreach (var drawing in context.Drawings)
                 drawing.State = LockState.INSTANCE;
         }

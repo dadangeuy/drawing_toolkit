@@ -7,12 +7,12 @@ namespace Drawing_Toolkit.Model.Canvas.State {
         public static readonly MultiSelectState INSTANCE = new MultiSelectState();
         private MultiSelectState() { }
 
-        public override void KeyUp(CanvasContext context, KeyEventArgs args) {
+        public override void KeyUp(Canvas context, KeyEventArgs args) {
             if (args.KeyCode == Keys.ShiftKey) context.State = SelectState.INSTANCE;
         }
 
-        public override void MouseDown(CanvasContext context, MouseEventArgs args) {
-            DrawingObject drawing = GetIntersectDrawing(context, args);
+        public override void MouseDown(Canvas context, MouseEventArgs args) {
+            Drawable drawing = GetIntersectDrawing(context, args);
             bool intersect = drawing != null;
             if (intersect) {
                 bool inEditState = drawing.State == EditState.INSTANCE;
@@ -21,7 +21,7 @@ namespace Drawing_Toolkit.Model.Canvas.State {
             }
         }
 
-        private DrawingObject GetIntersectDrawing(CanvasContext context, MouseEventArgs args) {
+        private Drawable GetIntersectDrawing(Canvas context, MouseEventArgs args) {
             foreach (var drawing in context.Drawings)
                 if (drawing.Intersect(args.Location))
                     return drawing;

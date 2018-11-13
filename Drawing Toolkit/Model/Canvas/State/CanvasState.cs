@@ -1,12 +1,11 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Drawing_Toolkit.Model.Canvas.State {
     abstract class CanvasState {
-        public virtual void KeyDown(CanvasContext context, KeyEventArgs args) { }
-        public virtual void KeyUp(CanvasContext context, KeyEventArgs args) { }
-        public virtual void MouseDown(CanvasContext context, MouseEventArgs args) { }
-        public virtual void MouseMove(CanvasContext context, MouseEventArgs args) { }
-        public virtual void MouseUp(CanvasContext context, MouseEventArgs args) { }
+        public virtual void KeyDown(Canvas context, KeyEventArgs args) { }
+        public virtual void KeyUp(Canvas context, KeyEventArgs args) { }
+        public virtual void MouseDown(Canvas context, MouseEventArgs args) { }
+        public virtual void MouseMove(Canvas context, MouseEventArgs args) { }
+        public virtual void MouseUp(Canvas context, MouseEventArgs args) { }
     }
 }
