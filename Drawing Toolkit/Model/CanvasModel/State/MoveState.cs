@@ -13,15 +13,17 @@ namespace Drawing_Toolkit.Model.CanvasModel.State {
         public override void MouseMove(Canvas context, MouseEventArgs args) {
             var location = args.Location;
             var initialLocation = context.InitialLocation;
-            foreach (var drawing in context.Drawings) {
-                var offset = new Point(location.X - initialLocation.X, location.Y - initialLocation.Y);
-                drawing.Move(offset);
-            }
+            var offset = new Point(location.X - initialLocation.X, location.Y - initialLocation.Y);
+            MoveDrawables(context, offset);
             context.InitialLocation = location;
         }
 
         public override void MouseUp(Canvas context, MouseEventArgs args) {
             context.State = SelectState.INSTANCE;
+        }
+
+        private void MoveDrawables(Canvas context, Point offset) {
+            foreach (var drawable in context.Drawables) drawable.Move(offset);
         }
     }
 }

@@ -12,17 +12,18 @@ namespace Drawing_Toolkit.Model.CanvasModel.State {
         }
 
         public override void MouseDown(Canvas context, MouseEventArgs args) {
-            Drawable drawing = GetIntersectDrawing(context, args);
-            bool intersect = drawing != null;
-            if (intersect) {
-                bool inEditState = drawing.State == EditState.INSTANCE;
-                if (inEditState) drawing.State = LockState.INSTANCE;
-                else drawing.State = EditState.INSTANCE;
-            }
+            Drawable drawable = GetSelectedDrawable(context, args);
+
+            bool notIntersect = drawable == null;
+            if (notIntersect) return;
+
+            bool inEditState = drawable.State == EditState.INSTANCE;
+            if (inEditState) drawable.State = LockState.INSTANCE;
+            else drawable.State = EditState.INSTANCE;
         }
 
-        private Drawable GetIntersectDrawing(Canvas context, MouseEventArgs args) {
-            foreach (var drawing in context.Drawings)
+        private Drawable GetSelectedDrawable(Canvas context, MouseEventArgs args) {
+            foreach (var drawing in context.Drawables)
                 if (drawing.Intersect(args.Location))
                     return drawing;
             return null;

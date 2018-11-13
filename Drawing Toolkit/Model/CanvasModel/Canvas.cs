@@ -7,8 +7,8 @@ using Drawing_Toolkit.Model.DrawableModel;
 
 namespace Drawing_Toolkit.Model.CanvasModel {
     class Canvas : StateContext<CanvasState> {
-        public LinkedList<Drawable> Drawings { get; } = new LinkedList<Drawable>();
-        public Drawable NewDrawing = EmptyDrawable.INSTANCE;
+        public LinkedList<Drawable> Drawables { get; } = new LinkedList<Drawable>();
+        public Drawable NewDrawable = EmptyDrawable.INSTANCE;
         public Point InitialLocation { get; set; }
 
         public Canvas() : base(SelectState.INSTANCE) { }
@@ -34,7 +34,7 @@ namespace Drawing_Toolkit.Model.CanvasModel {
         }
 
         public void Render(Graphics graphics, Rectangle area) {
-            foreach (var drawing in Drawings) {
+            foreach (var drawing in Drawables) {
                 if (drawing.Intersect(area)) {
                     drawing.Render(graphics);
                 }

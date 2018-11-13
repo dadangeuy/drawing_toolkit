@@ -14,52 +14,59 @@ namespace Drawing_Toolkit.Model.CanvasModel.State {
         }
 
         public override void KeyUp(Canvas context, KeyEventArgs args) {
-            if (args.Control && args.KeyCode == Keys.G) {
-                var editDrawings = GetAllDrawingInEditState(context);
-                if (editDrawings.Count > 1) {
-                    foreach (var drawing in editDrawings)
-                        context.Drawings.Remove(drawing);
-                    var GroupDrawing = new GroupDrawable(editDrawings);
-                    context.Drawings.AddFirst(GroupDrawing);
-                }
-            }
-        }
-
-        private LinkedList<Drawable> GetAllDrawingInEditState(Canvas context) {
-            var drawings = new LinkedList<Drawable>();
-            foreach (var drawing in context.Drawings)
-                if (drawing.State == EditState.INSTANCE)
-                    drawings.AddLast(drawing);
-            return drawings;
+            if (args.Control && args.KeyCode == Keys.G) GroupDrawings(context);
         }
 
         public override void MouseDown(Canvas context, MouseEventArgs args) {
-            var intersectDrawing = GetIntersectDrawing(context, args);
-            bool noIntersect = intersectDrawing == null;
+            var drawable = GetSelectedDrawable(context, args);
+            bool noIntersect = drawable == null;
             if (noIntersect) {
-                LockAllDrawing(context);
+                LockDrawables(context);
             } else {
-                bool inEditState = intersectDrawing.State == EditState.INSTANCE;
-                if (inEditState) {
-                    context.State = MoveState.INSTANCE;
-                    context.MouseDown(args);
-                } else {
-                    LockAllDrawing(context);
-                    intersectDrawing.State = EditState.INSTANCE;
-                }
+                bool inEditState = drawable.State == EditState.INSTANCE;
+                if (inEditState) MoveDrawable(context, args);
+                else SelectDrawable(context, drawable);
             }
         }
 
-        private Drawable GetIntersectDrawing(Canvas context, MouseEventArgs args) {
-            foreach (var drawing in context.Drawings)
-                if (drawing.Intersect(args.Location))
-                    return drawing;
+        private void GroupDrawings(Canvas context) {
+            var drawables = GetDrawablesInEditState(context);
+
+            bool uselessToGroup = drawables.Count <= 1;
+            if (uselessToGroup) return;
+
+            foreach (var drawing in drawables) context.Drawables.Remove(drawing);
+            var GroupDrawing = new GroupDrawable(drawables);
+            context.Drawables.AddFirst(GroupDrawing);
+        }
+
+        private LinkedList<Drawable> GetDrawablesInEditState(Canvas context) {
+            var drawables = new LinkedList<Drawable>();
+            foreach (var drawing in context.Drawables)
+                if (drawing.State == EditState.INSTANCE)
+                    drawables.AddLast(drawing);
+            return drawables;
+        }
+
+        private Drawable GetSelectedDrawable(Canvas context, MouseEventArgs args) {
+            foreach (var drawable in context.Drawables)
+                if (drawable.Intersect(args.Location))
+                    return drawable;
             return null;
         }
 
-        private void LockAllDrawing(Canvas context) {
-            foreach (var drawing in context.Drawings)
-                drawing.State = LockState.INSTANCE;
+        private void MoveDrawable(Canvas context, MouseEventArgs args) {
+            context.State = MoveState.INSTANCE;
+            context.MouseDown(args);
+        }
+
+        private void SelectDrawable(Canvas context, Drawable drawable) {
+            LockDrawables(context);
+            drawable.State = EditState.INSTANCE;
+        }
+
+        private void LockDrawables(Canvas context) {
+            foreach (var drawable in context.Drawables) drawable.State = LockState.INSTANCE;
         }
     }
 }

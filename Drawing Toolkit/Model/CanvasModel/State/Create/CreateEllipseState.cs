@@ -6,7 +6,7 @@ namespace Drawing_Toolkit.Model.CanvasModel.State.Create {
         public static readonly CreateEllipseState INSTANCE = new CreateEllipseState();
         private CreateEllipseState() { }
 
-        protected override Drawable CreateDrawingInternal() {
+        protected override Drawable CreateNewDrawable() {
             return new SingleDrawable(new EllipseShape());
         }
     }
