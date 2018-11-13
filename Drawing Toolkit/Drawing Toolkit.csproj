@@ -70,7 +70,7 @@
     <Compile Include="Model\CanvasModel\State\MultiSelectState.cs" />
     <Compile Include="Model\CanvasModel\State\SelectState.cs" />
     <Compile Include="Model\DrawableModel\Drawable.cs" />
-    <Compile Include="Model\DrawableModel\EmptyDrawingContext.cs" />
+    <Compile Include="Model\DrawableModel\EmptyDrawable.cs" />
     <Compile Include="Model\DrawableModel\GroupDrawable.cs" />
     <Compile Include="Model\DrawableModel\Shape\LineShape.cs" />
     <Compile Include="Model\DrawableModel\SingleDrawable.cs" />

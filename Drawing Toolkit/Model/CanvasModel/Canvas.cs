@@ -8,7 +8,7 @@ using Drawing_Toolkit.Model.DrawableModel;
 namespace Drawing_Toolkit.Model.CanvasModel {
     class Canvas : StateContext<CanvasState> {
         public LinkedList<Drawable> Drawings { get; } = new LinkedList<Drawable>();
-        public Drawable NewDrawing = Drawable.EMPTY;
+        public Drawable NewDrawing = EmptyDrawable.INSTANCE;
         public Point InitialLocation { get; set; }
 
         public Canvas() : base(SelectState.INSTANCE) { }

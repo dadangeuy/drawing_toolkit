@@ -1,7 +1,11 @@
 ﻿using System.Drawing;
 
 namespace Drawing_Toolkit.Model.DrawableModel {
-    class EmptyDrawingContext : Drawable {
+    class EmptyDrawable : Drawable {
+        public static readonly EmptyDrawable INSTANCE = new EmptyDrawable();
+
+        private EmptyDrawable() { }
+
         public override bool Intersect(Point location) {
             return false;
         }
