@@ -34,14 +34,11 @@ namespace Drawing_Toolkit.Model.Canvas {
         }
 
         public void Render(Graphics graphics, Rectangle area) {
-            int totalRender = 0;
             foreach (var drawing in Drawings) {
                 if (drawing.Intersect(area)) {
                     drawing.Render(graphics);
-                    ++totalRender;
                 }
             }
-            System.Console.WriteLine("rendering {0} drawing", totalRender);
         }
     }
 }
