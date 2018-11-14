@@ -5,8 +5,13 @@ using Drawing_Toolkit.common;
 using Drawing_Toolkit.model.drawable.state;
 
 namespace Drawing_Toolkit.model.drawable {
+<<<<<<< HEAD
     internal abstract class Drawable : StateContext<DrawingState> {
         protected readonly LinkedList<IObserver<Point>> MoveObservers = new LinkedList<IObserver<Point>>();
+=======
+    abstract class Drawable : StateContext<DrawingState> {
+        public event OnMoveEventHandler OnMove;
+>>>>>>> parent of 3ad424b... Fix Warning
 
         protected Drawable() : base(EditState.INSTANCE) { }
 
@@ -23,9 +28,13 @@ namespace Drawing_Toolkit.model.drawable {
         public abstract void Resize(Point from, Point to);
         public abstract void Render(Graphics graphics);
 
+<<<<<<< HEAD
         public IDisposable SubscribeMove(IObserver<Point> observer) {
             MoveObservers.AddLast(observer);
             return new Disposable<Point>(MoveObservers, observer);
         }
     }
+=======
+    delegate void OnMoveEventHandler(Drawable sender, Point offset);
+>>>>>>> parent of 3ad424b... Fix Warning
 }
