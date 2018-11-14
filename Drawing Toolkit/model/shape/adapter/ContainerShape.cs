@@ -26,6 +26,10 @@ namespace Drawing_Toolkit.model.shape.adapter {
             container.Offset(offset);
         }
 
+        public virtual void MoveFrom(Point offset) { }
+
+        public virtual void MoveTo(Point offset) { }
+
         public bool Intersect(Point location) {
             return container.Contains(location);
         }

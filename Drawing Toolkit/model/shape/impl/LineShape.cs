@@ -18,6 +18,16 @@ namespace Drawing_Toolkit.model.shape.impl {
             to.Offset(offset);
         }
 
+        public override void MoveFrom(Point offset) {
+            from.Offset(offset);
+            base.SetShape(from, to);
+        }
+
+        public override void MoveTo(Point offset) {
+            to.Offset(offset);
+            base.SetShape(from, to);
+        }
+
         protected override void RenderInternal(Graphics graphics, Pen pen, Rectangle container) {
             graphics.DrawLine(SHAPE_PEN, from, to);
         }

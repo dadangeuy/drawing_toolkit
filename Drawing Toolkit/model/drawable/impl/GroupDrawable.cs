@@ -33,7 +33,7 @@ namespace Drawing_Toolkit.model.drawable.impl {
             return false;
         }
 
-        protected override void MoveInternal(Point offset) {
+        public override void Move(Point offset) {
             foreach (var drawing in drawings)
                 drawing.Move(offset);
         }

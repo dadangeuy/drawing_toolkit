@@ -1,4 +1,6 @@
-﻿using Drawing_Toolkit.model.drawable;
+﻿using System.Drawing;
+using System.Windows.Forms;
+using Drawing_Toolkit.model.drawable;
 using Drawing_Toolkit.model.drawable.impl;
 using Drawing_Toolkit.model.shape.impl;
 
