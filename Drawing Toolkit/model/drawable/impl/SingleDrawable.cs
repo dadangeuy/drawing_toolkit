@@ -15,7 +15,7 @@ namespace Drawing_Toolkit.model.drawable.impl {
         public override void ConnectToPointWith(Drawable drawable) {
         }
 
-        public override void Move(Point offset) {
+        protected override void MoveInternal(Point offset) {
             State.Move(shape, offset);
         }
 
