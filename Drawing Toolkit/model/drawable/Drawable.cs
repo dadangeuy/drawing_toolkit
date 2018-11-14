@@ -3,7 +3,7 @@ using Drawing_Toolkit.common;
 using Drawing_Toolkit.model.drawable.state;
 
 namespace Drawing_Toolkit.model.drawable {
-    abstract class Drawable : StateContext<DrawingState> {
+    internal abstract class Drawable : StateContext<DrawingState> {
         public event OnMoveEventHandler OnMove;
 
         protected Drawable() : base(EditState.INSTANCE) { }
@@ -20,5 +20,5 @@ namespace Drawing_Toolkit.model.drawable {
         public abstract void Render(Graphics graphics);
     }
 
-    delegate void OnMoveEventHandler(Drawable sender, Point offset);
+    internal delegate void OnMoveEventHandler(Drawable sender, Point offset);
 }
