@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Drawing_Toolkit.model.drawable.shape {
+namespace Drawing_Toolkit.model.shape {
     internal interface IShape {
         void SetGraphics(Graphics graphics);
         void SetShape(Point from, Point to);

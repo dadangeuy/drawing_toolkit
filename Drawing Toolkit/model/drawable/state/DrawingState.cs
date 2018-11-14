@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using Drawing_Toolkit.model.drawable.shape;
+using Drawing_Toolkit.model.shape;
 
 namespace Drawing_Toolkit.model.drawable.state {
     internal abstract class DrawingState {

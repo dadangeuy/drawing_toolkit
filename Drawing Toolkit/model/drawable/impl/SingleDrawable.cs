@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using Drawing_Toolkit.model.drawable.shape;
+using Drawing_Toolkit.model.shape;
 
 namespace Drawing_Toolkit.model.drawable.impl {
     internal class SingleDrawable : Drawable {
@@ -9,7 +9,7 @@ namespace Drawing_Toolkit.model.drawable.impl {
             this.shape = shape;
         }
 
-        public override void Move(Point offset) {
+        protected override void MoveInternal(Point offset) {
             State.Move(shape, offset);
         }
 

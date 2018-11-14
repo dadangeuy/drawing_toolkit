@@ -1,6 +1,6 @@
 ﻿using Drawing_Toolkit.model.drawable;
 using Drawing_Toolkit.model.drawable.impl;
-using Drawing_Toolkit.model.drawable.shape.impl;
+using Drawing_Toolkit.model.shape.impl;
 
 namespace Drawing_Toolkit.model.canvas.state.create {
     internal class CreateRectangleState : CreateShapeState {

@@ -14,7 +14,7 @@ namespace Drawing_Toolkit.model.drawable.impl {
             return false;
         }
 
-        public override void Move(Point offset) { }
+        protected override void MoveInternal(Point offset) { }
 
         public override void Render(Graphics graphics) { }
 
