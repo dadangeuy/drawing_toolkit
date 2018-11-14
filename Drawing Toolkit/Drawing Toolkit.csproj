@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\StateContext.cs" />
-    <Compile Include="Controller\CanvasControl.cs">
+    <Compile Include="common\StateContext.cs" />
+    <Compile Include="control\CanvasControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controller\ToolsControl.cs">
+    <Compile Include="control\ToolsControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainWindow.cs">
@@ -59,31 +59,31 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\CanvasModel\Canvas.cs" />
-    <Compile Include="Model\CanvasModel\State\CanvasState.cs" />
-    <Compile Include="Model\CanvasModel\State\Create\CreateEllipseState.cs" />
-    <Compile Include="Model\CanvasModel\State\Create\CreateLineState.cs" />
-    <Compile Include="Model\CanvasModel\State\Create\CreateRectangleState.cs" />
-    <Compile Include="Model\CanvasModel\State\Create\CreateShapeState.cs" />
-    <Compile Include="Model\CanvasModel\State\DeleteState.cs" />
-    <Compile Include="Model\CanvasModel\State\MoveState.cs" />
-    <Compile Include="Model\CanvasModel\State\MultiSelectState.cs" />
-    <Compile Include="Model\CanvasModel\State\SelectState.cs" />
-    <Compile Include="Model\DrawableModel\Drawable.cs" />
-    <Compile Include="Model\DrawableModel\Impl\EmptyDrawable.cs" />
-    <Compile Include="Model\DrawableModel\Impl\GroupDrawable.cs" />
-    <Compile Include="Model\DrawableModel\Shape\Impl\LineShape.cs" />
-    <Compile Include="Model\DrawableModel\Impl\SingleDrawable.cs" />
-    <Compile Include="Model\DrawableModel\Shape\Adapter\ContainerShape.cs" />
-    <Compile Include="Model\DrawableModel\Shape\Impl\EllipseShape.cs" />
-    <Compile Include="Model\DrawableModel\Shape\IShape.cs" />
-    <Compile Include="Model\DrawableModel\Shape\Impl\RectangleShape.cs" />
-    <Compile Include="Model\DrawableModel\State\EditState.cs" />
-    <Compile Include="Model\DrawableModel\State\DrawingState.cs" />
-    <Compile Include="Model\DrawableModel\State\LockState.cs" />
+    <Compile Include="model\canvas\Canvas.cs" />
+    <Compile Include="model\canvas\state\CanvasState.cs" />
+    <Compile Include="model\canvas\state\create\CreateEllipseState.cs" />
+    <Compile Include="model\canvas\state\create\CreateLineState.cs" />
+    <Compile Include="model\canvas\state\create\CreateRectangleState.cs" />
+    <Compile Include="model\canvas\state\create\CreateShapeState.cs" />
+    <Compile Include="model\canvas\state\DeleteState.cs" />
+    <Compile Include="model\canvas\state\MoveState.cs" />
+    <Compile Include="model\canvas\state\MultiSelectState.cs" />
+    <Compile Include="model\canvas\state\SelectState.cs" />
+    <Compile Include="model\drawable\Drawable.cs" />
+    <Compile Include="model\drawable\impl\EmptyDrawable.cs" />
+    <Compile Include="model\drawable\impl\GroupDrawable.cs" />
+    <Compile Include="model\drawable\shape\impl\LineShape.cs" />
+    <Compile Include="model\drawable\impl\SingleDrawable.cs" />
+    <Compile Include="model\drawable\shape\adapter\ContainerShape.cs" />
+    <Compile Include="model\drawable\shape\impl\EllipseShape.cs" />
+    <Compile Include="model\drawable\shape\IShape.cs" />
+    <Compile Include="model\drawable\shape\impl\RectangleShape.cs" />
+    <Compile Include="model\drawable\state\EditState.cs" />
+    <Compile Include="model\drawable\state\DrawingState.cs" />
+    <Compile Include="model\drawable\state\LockState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\RectangleUtil.cs" />
+    <Compile Include="util\RectangleUtil.cs" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,7 +1,7 @@
-﻿using Drawing_Toolkit.Controller;
-using System.Windows.Forms;
-using Drawing_Toolkit.Model.CanvasModel.State;
-using Drawing_Toolkit.Model.CanvasModel.State.Create;
+﻿using System.Windows.Forms;
+using Drawing_Toolkit.control;
+using Drawing_Toolkit.model.canvas.state;
+using Drawing_Toolkit.model.canvas.state.create;
 
 namespace Drawing_Toolkit {
     public partial class MainWindow : Form {

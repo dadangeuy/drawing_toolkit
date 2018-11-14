@@ -1,9 +1,9 @@
-﻿namespace Drawing_Toolkit.Common {
-    abstract class StateContext<T> {
-        public virtual T State { get; set; }
-
+﻿namespace Drawing_Toolkit.common {
+    internal abstract class StateContext<T> {
         public StateContext(T defaultState) {
             State = defaultState;
         }
+
+        public virtual T State { get; set; }
     }
 }
