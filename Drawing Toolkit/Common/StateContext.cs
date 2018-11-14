@@ -1,6 +1,6 @@
 ﻿namespace Drawing_Toolkit.common {
     internal abstract class StateContext<T> {
-        public StateContext(T defaultState) {
+        protected StateContext(T defaultState) {
             State = defaultState;
         }
 

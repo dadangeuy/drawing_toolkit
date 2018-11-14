@@ -38,8 +38,8 @@ namespace Drawing_Toolkit.model.canvas.state {
             if (uselessToGroup) return;
 
             foreach (var drawing in drawables) context.Drawables.Remove(drawing);
-            var GroupDrawing = new GroupDrawable(drawables);
-            context.Drawables.AddFirst(GroupDrawing);
+            var drawableGroup = new GroupDrawable(drawables);
+            context.Drawables.AddFirst(drawableGroup);
         }
 
         private LinkedList<Drawable> GetDrawablesInEditState(Canvas context) {

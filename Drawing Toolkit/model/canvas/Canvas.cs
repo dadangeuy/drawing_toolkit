@@ -9,10 +9,10 @@ using Drawing_Toolkit.model.drawable.impl;
 namespace Drawing_Toolkit.model.canvas {
     internal class Canvas : StateContext<CanvasState> {
         public Drawable NewDrawable = EmptyDrawable.INSTANCE;
-
-        public Canvas() : base(SelectState.INSTANCE) { }
         public LinkedList<Drawable> Drawables { get; } = new LinkedList<Drawable>();
         public Point InitialLocation { get; set; }
+
+        public Canvas() : base(SelectState.INSTANCE) { }
 
         public void MouseDown(MouseEventArgs args) {
             State.MouseDown(this, args);
