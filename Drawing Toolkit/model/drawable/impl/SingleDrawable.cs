@@ -9,7 +9,7 @@ namespace Drawing_Toolkit.model.drawable.impl {
             this.shape = shape;
         }
 
-        protected override void MoveInternal(Point offset) {
+        public override void Move(Point offset) {
             State.Move(shape, offset);
         }
 

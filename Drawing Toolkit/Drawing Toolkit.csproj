@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="common\Disposable.cs" />
     <Compile Include="common\StateContext.cs" />
     <Compile Include="control\CanvasControl.cs">
       <SubType>Component</SubType>
