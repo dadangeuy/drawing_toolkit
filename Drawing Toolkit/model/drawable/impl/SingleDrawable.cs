@@ -9,12 +9,6 @@ namespace Drawing_Toolkit.model.drawable.impl {
             this.shape = shape;
         }
 
-        public override void ConnectFromPointWith(Drawable drawable) {
-        }
-
-        public override void ConnectToPointWith(Drawable drawable) {
-        }
-
         protected override void MoveInternal(Point offset) {
             State.Move(shape, offset);
         }
