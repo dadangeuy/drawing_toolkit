@@ -34,8 +34,8 @@ namespace Drawing_Toolkit.model.drawable.impl {
         }
 
         public override void Move(Point offset) {
-            foreach (var drawing in drawings)
-                drawing.Move(offset);
+            foreach (var drawing in drawings) drawing.Move(offset);
+            notifyUpdate();
         }
 
         public override void Render(Graphics graphics) {
@@ -44,8 +44,8 @@ namespace Drawing_Toolkit.model.drawable.impl {
         }
 
         public override void Resize(Point from, Point to) {
-            foreach (var drawing in drawings)
-                drawing.Resize(from, to);
+            foreach (var drawing in drawings) drawing.Resize(from, to);
+            notifyUpdate();
         }
     }
 }

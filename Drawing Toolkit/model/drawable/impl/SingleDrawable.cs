@@ -11,10 +11,12 @@ namespace Drawing_Toolkit.model.drawable.impl {
 
         public override void Move(Point offset) {
             State.Move(shape, offset);
+            notifyUpdate();
         }
 
         public override void Resize(Point from, Point to) {
             State.Resize(shape, from, to);
+            notifyUpdate();
         }
 
         public override bool Intersect(Point location) {
