@@ -6,18 +6,18 @@ using Timer = System.Timers.Timer;
 
 namespace Drawing_Toolkit.control {
     internal class CanvasControl : Control {
-        private readonly Canvas canvas = new Canvas();
+        private readonly Canvas Canvas = new Canvas();
 
         public CanvasControl() {
-            InitUI();
+            InitUi();
             InitCallback();
         }
 
         public void SetCanvasState(CanvasState state) {
-            canvas.State = state;
+            Canvas.State = state;
         }
 
-        private void InitUI() {
+        private void InitUi() {
             Dock = DockStyle.Fill;
             BackColor = Color.White;
             // reduce flickering
@@ -31,15 +31,15 @@ namespace Drawing_Toolkit.control {
         }
 
         private void InitMouseEvent() {
-            MouseDown += (s, args) => canvas.MouseDown(args);
-            MouseMove += (s, args) => canvas.MouseMove(args);
-            MouseUp += (s, args) => canvas.MouseUp(args);
-            KeyDown += (s, args) => canvas.KeyDown(args);
-            KeyUp += (s, args) => canvas.KeyUp(args);
+            MouseDown += (s, args) => Canvas.MouseDown(args);
+            MouseMove += (s, args) => Canvas.MouseMove(args);
+            MouseUp += (s, args) => Canvas.MouseUp(args);
+            KeyDown += (s, args) => Canvas.KeyDown(args);
+            KeyUp += (s, args) => Canvas.KeyUp(args);
         }
 
         private void InitRenderEvent() {
-            Paint += (s, e) => canvas.Render(e.Graphics, e.ClipRectangle);
+            Paint += (s, e) => Canvas.Render(e.Graphics, e.ClipRectangle);
             InitPeriodicRender();
         }
 

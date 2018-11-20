@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Drawing_Toolkit.model.canvas.state {
     internal class MoveState : CanvasState {
-        public static readonly MoveState INSTANCE = new MoveState();
+        public static readonly MoveState Instance = new MoveState();
         private MoveState() { }
 
         public override void MouseDown(Canvas context, MouseEventArgs args) {
@@ -19,7 +19,7 @@ namespace Drawing_Toolkit.model.canvas.state {
         }
 
         public override void MouseUp(Canvas context, MouseEventArgs args) {
-            context.State = SelectState.INSTANCE;
+            context.State = SelectState.Instance;
         }
 
         private void MoveDrawables(Canvas context, Point offset) {

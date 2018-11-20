@@ -3,7 +3,7 @@ using Drawing_Toolkit.model.shape;
 
 namespace Drawing_Toolkit.model.drawable.state {
     internal class EditState : DrawingState {
-        public static readonly EditState INSTANCE = new EditState();
+        public static readonly EditState Instance = new EditState();
         private EditState() { }
 
         public override void Render(IShape shape) {

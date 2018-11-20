@@ -19,7 +19,7 @@ namespace Drawing_Toolkit.model.canvas.state.create {
 
         public override void MouseUp(Canvas context, MouseEventArgs args) {
             var drawable = context.NewDrawable;
-            drawable.State = LockState.INSTANCE;
+            drawable.State = LockState.Instance;
         }
 
         protected abstract Drawable CreateNewDrawable();

@@ -3,33 +3,33 @@ using Drawing_Toolkit.model.shape;
 
 namespace Drawing_Toolkit.model.drawable.impl {
     internal class SingleDrawable : Drawable {
-        private readonly IShape shape;
+        private readonly IShape Shape;
 
         public SingleDrawable(IShape shape) {
-            this.shape = shape;
+            this.Shape = shape;
         }
 
         public override void Move(Point offset) {
-            State.Move(shape, offset);
-            notifyUpdate();
+            State.Move(Shape, offset);
+            NotifyUpdate();
         }
 
         public override void Resize(Point from, Point to) {
-            State.Resize(shape, from, to);
-            notifyUpdate();
+            State.Resize(Shape, from, to);
+            NotifyUpdate();
         }
 
         public override bool Intersect(Point location) {
-            return shape.Intersect(location);
+            return Shape.Intersect(location);
         }
 
         public override bool Intersect(Rectangle area) {
-            return shape.Intersect(area);
+            return Shape.Intersect(area);
         }
 
         public override void Render(Graphics graphics) {
-            shape.SetGraphics(graphics);
-            State.Render(shape);
+            Shape.SetGraphics(graphics);
+            State.Render(Shape);
         }
     }
 }

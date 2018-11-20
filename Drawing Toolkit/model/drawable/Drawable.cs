@@ -8,7 +8,7 @@ namespace Drawing_Toolkit.model.drawable {
     internal abstract class Drawable : StateContext<DrawingState>, IObservable<Drawable> {
         private readonly LinkedList<IObserver<Drawable>> Observers = new LinkedList<IObserver<Drawable>>();
 
-        protected Drawable() : base(EditState.INSTANCE) { }
+        protected Drawable() : base(EditState.Instance) { }
 
         public abstract bool Intersect(Point location);
         public abstract bool Intersect(Rectangle area);
@@ -16,7 +16,7 @@ namespace Drawing_Toolkit.model.drawable {
         public abstract void Resize(Point from, Point to);
         public abstract void Render(Graphics graphics);
 
-        protected void notifyUpdate() {
+        protected void NotifyUpdate() {
             foreach (var observer in Observers) observer.OnNext(this);
         }
 

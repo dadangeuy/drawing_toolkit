@@ -2,7 +2,7 @@
 
 namespace Drawing_Toolkit.model.drawable.impl {
     internal class EmptyDrawable : Drawable {
-        public static readonly EmptyDrawable INSTANCE = new EmptyDrawable();
+        public static readonly EmptyDrawable Instance = new EmptyDrawable();
 
         private EmptyDrawable() { }
 

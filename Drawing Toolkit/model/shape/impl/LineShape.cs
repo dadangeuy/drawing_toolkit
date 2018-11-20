@@ -3,33 +3,33 @@ using Drawing_Toolkit.model.shape.adapter;
 
 namespace Drawing_Toolkit.model.shape.impl {
     internal class LineShape : ContainerShape {
-        private Point from;
-        private Point to;
+        private Point From;
+        private Point To;
 
         public override void SetShape(Point from, Point to) {
             base.SetShape(from, to);
-            this.from = from;
-            this.to = to;
+            this.From = from;
+            this.To = to;
         }
 
         public override void Move(Point offset) {
             base.Move(offset);
-            from.Offset(offset);
-            to.Offset(offset);
+            From.Offset(offset);
+            To.Offset(offset);
         }
 
         public override void MoveFrom(Point offset) {
-            from.Offset(offset);
-            base.SetShape(from, to);
+            From.Offset(offset);
+            base.SetShape(From, To);
         }
 
         public override void MoveTo(Point offset) {
-            to.Offset(offset);
-            base.SetShape(from, to);
+            To.Offset(offset);
+            base.SetShape(From, To);
         }
 
         protected override void RenderInternal(Graphics graphics, Pen pen, Rectangle container) {
-            graphics.DrawLine(SHAPE_PEN, from, to);
+            graphics.DrawLine(ShapePen, From, To);
         }
     }
 }

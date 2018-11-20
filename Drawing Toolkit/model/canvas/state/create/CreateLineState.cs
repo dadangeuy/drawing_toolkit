@@ -6,7 +6,7 @@ using Drawing_Toolkit.model.shape.impl;
 
 namespace Drawing_Toolkit.model.canvas.state.create {
     internal class CreateLineState : CreateShapeState {
-        public static readonly CreateLineState INSTANCE = new CreateLineState();
+        public static readonly CreateLineState Instance = new CreateLineState();
         private CreateLineState() { }
 
         protected override Drawable CreateNewDrawable() {

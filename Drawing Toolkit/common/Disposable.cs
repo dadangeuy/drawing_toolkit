@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace Drawing_Toolkit.common {
     class Disposable<T> : IDisposable {
-        private readonly LinkedList<IObserver<T>> observers;
-        private readonly IObserver<T> observer;
+        private readonly LinkedList<IObserver<T>> Observers;
+        private readonly IObserver<T> Observer;
 
         public Disposable(LinkedList<IObserver<T>> observers, IObserver<T> observer) {
-            this.observers = observers;
-            this.observer = observer;
+            this.Observers = observers;
+            this.Observer = observer;
         }
 
         public void Dispose() {
-            if (observer != null && observers.Contains(observer))
-                observers.Remove(observer);
+            if (Observer != null && Observers.Contains(Observer))
+                Observers.Remove(Observer);
         }
     }
 }

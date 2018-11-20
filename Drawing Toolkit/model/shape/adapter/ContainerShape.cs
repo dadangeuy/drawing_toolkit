@@ -4,26 +4,26 @@ using Drawing_Toolkit.util;
 
 namespace Drawing_Toolkit.model.shape.adapter {
     internal abstract class ContainerShape : IShape {
-        protected static readonly Pen SHAPE_PEN = new Pen(Color.Black);
+        protected static readonly Pen ShapePen = new Pen(Color.Black);
 
-        protected static readonly Pen CONTAINER_PEN = new Pen(Color.Red) {
+        protected static readonly Pen ContainerPen = new Pen(Color.Red) {
             Width = 2,
             DashStyle = DashStyle.Dot
         };
 
-        private Rectangle container;
-        private Graphics graphics;
+        private Rectangle Container;
+        private Graphics Graphics;
 
         public void SetGraphics(Graphics graphics) {
-            this.graphics = graphics;
+            this.Graphics = graphics;
         }
 
         public virtual void SetShape(Point from, Point to) {
-            container = RectangleUtil.FromPoint(from, to);
+            Container = RectangleUtil.FromPoint(from, to);
         }
 
         public virtual void Move(Point offset) {
-            container.Offset(offset);
+            Container.Offset(offset);
         }
 
         public virtual void MoveFrom(Point offset) { }
@@ -31,19 +31,19 @@ namespace Drawing_Toolkit.model.shape.adapter {
         public virtual void MoveTo(Point offset) { }
 
         public bool Intersect(Point location) {
-            return container.Contains(location);
+            return Container.Contains(location);
         }
 
         public bool Intersect(Rectangle area) {
-            return container.IntersectsWith(area);
+            return Container.IntersectsWith(area);
         }
 
         public void RenderShape() {
-            RenderInternal(graphics, SHAPE_PEN, container);
+            RenderInternal(Graphics, ShapePen, Container);
         }
 
         public void RenderShapeContainer() {
-            graphics.DrawRectangle(CONTAINER_PEN, container);
+            Graphics.DrawRectangle(ContainerPen, Container);
         }
 
         protected abstract void RenderInternal(Graphics graphics, Pen pen, Rectangle container);

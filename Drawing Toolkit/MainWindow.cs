@@ -5,30 +5,30 @@ using Drawing_Toolkit.model.canvas.state.create;
 
 namespace Drawing_Toolkit {
     public partial class MainWindow : Form {
-        private CanvasControl canvasControl = new CanvasControl();
-        private ToolsControl toolsControl = new ToolsControl();
+        private CanvasControl CanvasControl = new CanvasControl();
+        private ToolsControl ToolsControl = new ToolsControl();
 
         public MainWindow() {
             InitializeComponent();
-            InitUI();
+            InitUi();
             InjectControlEvent();
             InjectControl();
         }
 
-        private void InitUI() {
+        private void InitUi() {
             WindowState = FormWindowState.Maximized;
         }
 
         private void InjectControl() {
-            toolStripContainer.ContentPanel.Controls.Add(canvasControl);
-            toolStripContainer.LeftToolStripPanel.Controls.Add(toolsControl);
+            toolStripContainer.ContentPanel.Controls.Add(CanvasControl);
+            toolStripContainer.LeftToolStripPanel.Controls.Add(ToolsControl);
         }
 
         private void InjectControlEvent() {
-            toolsControl.OnSelectSelectionTool += (s, args) => canvasControl.SetCanvasState(SelectState.INSTANCE);
-            toolsControl.OnSelectLineTool += (s, args) => canvasControl.SetCanvasState(CreateLineState.INSTANCE);
-            toolsControl.OnSelectRectangleTool += (s, args) => canvasControl.SetCanvasState(CreateRectangleState.INSTANCE);
-            toolsControl.OnSelectEllipseTool += (s, args) => canvasControl.SetCanvasState(CreateEllipseState.INSTANCE);
+            ToolsControl.OnSelectSelectionTool += (s, args) => CanvasControl.SetCanvasState(SelectState.Instance);
+            ToolsControl.OnSelectLineTool += (s, args) => CanvasControl.SetCanvasState(CreateLineState.Instance);
+            ToolsControl.OnSelectRectangleTool += (s, args) => CanvasControl.SetCanvasState(CreateRectangleState.Instance);
+            ToolsControl.OnSelectEllipseTool += (s, args) => CanvasControl.SetCanvasState(CreateEllipseState.Instance);
         }
     }
 }
